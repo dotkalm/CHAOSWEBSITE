@@ -2,7 +2,7 @@
 
 exports[`Shapes Component should match snapshot 1`] = `
 <svg
-  class="shape MuiBox-root css-17zalpi"
+  class="shape MuiBox-root css-2hxxhw"
   data-testid="shape-octagon"
   role="img"
   style="z-index: 10;"

@@ -136,37 +136,70 @@ describe('Background Component', () => {
     const { getByTestId } = renderWithTheme(<Background />)
     const octagon = getByTestId('shape-octagon') as HTMLElement
     
-    // On mobile, shapes should be silver (#d9d9d9)
+    // On mobile, shapes should be silver from theme.palette.grey[300]
     const svgElement = octagon.querySelector('svg') || octagon
     const pathElement = svgElement.querySelector('path')
     
     if (pathElement) {
       const fill = window.getComputedStyle(pathElement).fill || pathElement.getAttribute('fill')
-      // Silver color from theme.palette.grey[300]
-      expect(fill).toContain('217, 217, 217') // rgb(217, 217, 217) = #d9d9d9
+      const expectedColor = theme.palette.grey[300]
+      
+      // Should match the theme token (either contains or equals)
+      const matchesColor = fill?.includes(expectedColor) || fill === expectedColor
+      expect(matchesColor).toEqual(true)
     }
   })
 
   it('should apply random rotation (0-360 degrees) to each shape', () => {
-    const { getByTestId } = renderWithTheme(<Background />)
+    const { getByTestId, unmount } = renderWithTheme(<Background />)
 
     const octagon = getByTestId('shape-octagon') as HTMLElement
     const square = getByTestId('shape-square') as HTMLElement
     const triangle = getByTestId('shape-triangle') as HTMLElement
 
     const shapes = [octagon, square, triangle]
+    const rotations1: number[] = []
 
     shapes.forEach(shape => {
       const transform = shape.style.transform
-      const rotateMatch = transform.match(/rotate\(([\d.]+)deg\)/)
+      expect(transform).toBeDefined()
+      expect(transform).not.toEqual('')
       
-      expect(rotateMatch).toBeDefined()
+      const rotateMatch = transform.match(/rotate\(([\d.]+)deg\)/)
+      expect(rotateMatch).not.toEqual(null)
+      
       if (rotateMatch) {
         const rotation = parseFloat(rotateMatch[1])
         expect(rotation).toBeGreaterThanOrEqual(0)
         expect(rotation).toBeLessThanOrEqual(360)
+        rotations1.push(rotation)
       }
     })
+
+    unmount()
+
+    // Remount and verify rotations changed
+    const { getByTestId: getByTestId2 } = renderWithTheme(<Background />)
+    const octagon2 = getByTestId2('shape-octagon') as HTMLElement
+    const square2 = getByTestId2('shape-square') as HTMLElement
+    const triangle2 = getByTestId2('shape-triangle') as HTMLElement
+
+    const shapes2 = [octagon2, square2, triangle2]
+    const rotations2: number[] = []
+
+    shapes2.forEach(shape => {
+      const transform = shape.style.transform
+      const rotateMatch = transform.match(/rotate\(([\d.]+)deg\)/)
+      
+      if (rotateMatch) {
+        const rotation = parseFloat(rotateMatch[1])
+        rotations2.push(rotation)
+      }
+    })
+
+    // At least one rotation should be different after remount
+    const allSame = rotations1.every((rot, idx) => rot === rotations2[idx])
+    expect(allSame).toEqual(false)
   })
 
   it('should apply random z-index (10-99) to each shape', () => {
