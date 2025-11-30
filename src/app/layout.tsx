@@ -1,4 +1,4 @@
-import './styles/globals.css';
+import '../styles/globals.css';
 import MuiProvider from '../providers/MuiProvider';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
@@ -32,7 +32,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <link rel="manifest" href="/site.webmanifest" />
-        <link rel="icon" href="/favicons/favicon.svg" />
+        <link rel="icon" href="/favicons/favicon.ico" />
+        <link rel="shortcut icon" href="/favicons/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/favicons/favicon-512.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/favicons/favicon-192.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180.png" />
+        <link rel="mask-icon" href="/favicon/Chaos_Favicon_HP.svg" color="#008700" />
+        <meta name="theme-color" content="#008700" />
+        <meta name="msapplication-TileColor" content="#008700" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       </head>
