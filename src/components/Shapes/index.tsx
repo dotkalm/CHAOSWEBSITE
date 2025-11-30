@@ -13,16 +13,19 @@ export default function Shapes() {
       <Octagon 
         left={layouts[0].left}
         top={layouts[0].top}
+        scale={layouts[0].scale}
         rotate={layouts[0].rotation} 
       />
       <Square 
         left={layouts[1].left}
         top={layouts[1].top}
+        scale={layouts[1].scale}
         rotate={layouts[1].rotation} 
       />
       <Triangle 
         left={layouts[2].left}
         top={layouts[2].top}
+        scale={layouts[2].scale}
         rotate={layouts[2].rotation} 
       />
     </>

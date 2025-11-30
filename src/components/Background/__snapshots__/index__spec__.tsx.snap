@@ -8,7 +8,7 @@ exports[`Background Component should match snapshot 1`] = `
     class="shape MuiBox-root css-0"
     data-testid="shape-octagon"
     role="img"
-    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(267deg) scale(1); z-index: 10;"
+    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(118deg) scale(0.7160879246968117); z-index: 10;"
     viewBox="0 0 144 144"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -20,7 +20,7 @@ exports[`Background Component should match snapshot 1`] = `
     class="shape MuiBox-root css-0"
     data-testid="shape-square"
     role="img"
-    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(338deg) scale(1); z-index: 10;"
+    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(270deg) scale(1.038493664647717); z-index: 10;"
     viewBox="0 0 144 144"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -32,7 +32,7 @@ exports[`Background Component should match snapshot 1`] = `
     class="shape MuiBox-root css-0"
     data-testid="shape-triangle"
     role="img"
-    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(59deg) scale(1); z-index: 10;"
+    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(243deg) scale(0.5257777679721539); z-index: 10;"
     viewBox="0 0 144 144"
     xmlns="http://www.w3.org/2000/svg"
   >
