@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from 'react';
 import Box from '@mui/material/Box';
+import Shapes from '@/components/Shapes';
 
 export default function Background(){
   return (
@@ -11,9 +11,9 @@ export default function Background(){
       left: 0,
       width: '100vw',
       height: '100vh',
-      backgroundColor: 'dodgerblue',
       zIndex: -9999
     }}>
+      <Shapes />
     </Box>
   );
 }
