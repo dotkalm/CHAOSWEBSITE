@@ -2,8 +2,7 @@
 
 exports[`Triangle Component should match snapshot 1`] = `
 <svg
-  class="shape MuiBox-root css-1vzkiio"
-  data-fill="#000"
+  class="shape MuiBox-root css-0"
   data-testid="shape-triangle"
   role="img"
   style="z-index: 10;"

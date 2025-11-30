@@ -2,11 +2,10 @@
 
 exports[`Shapes Component should match snapshot 1`] = `
 <svg
-  class="shape MuiBox-root css-2hxxhw"
-  data-fill="#008700"
+  class="shape MuiBox-root css-0"
   data-testid="shape-octagon"
   role="img"
-  style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(10deg) scale(1); z-index: 10;"
+  style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(160deg) scale(1); z-index: 10;"
   viewBox="0 0 144 144"
   xmlns="http://www.w3.org/2000/svg"
 >
