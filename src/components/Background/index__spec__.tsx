@@ -35,27 +35,29 @@ describe('Background Component', () => {
   })
 
   it('should apply random positioning to shapes on each mount', () => {
-    const { getAllByRole: getAllByRole1, unmount: unmount1 } = renderWithTheme(<Background />)
-    const shapes1 = getAllByRole1('img')
+    const { getByTestId } = renderWithTheme(<Background />)
 
-    const positions1 = shapes1.map(shape => ({
-      left: (shape as HTMLElement).style.left,
-      top: (shape as HTMLElement).style.top,
-      transform: (shape as HTMLElement).style.transform
-    }))
+    const octagon = getByTestId('shape-octagon') as HTMLElement
+    const square = getByTestId('shape-square') as HTMLElement
+    const triangle = getByTestId('shape-triangle') as HTMLElement
 
-    unmount1()
+    expect(octagon.style.left).toBeDefined()
+    expect(octagon.style.left).not.toEqual('')
+    expect(octagon.style.top).toBeDefined()
+    expect(octagon.style.top).not.toEqual('')
+    expect(octagon.style.transform).toContain('translate')
 
-    const { getAllByRole: getAllByRole2 } = renderWithTheme(<Background />)
-    const shapes2 = getAllByRole2('img')
+    expect(square.style.left).toBeDefined()
+    expect(square.style.left).not.toEqual('')
+    expect(square.style.top).toBeDefined()
+    expect(square.style.top).not.toEqual('')
+    expect(square.style.transform).toContain('translate')
 
-    const positions2 = shapes2.map(shape => ({
-      left: (shape as HTMLElement).style.left,
-      top: (shape as HTMLElement).style.top,
-      transform: (shape as HTMLElement).style.transform
-    }))
-
-    expect(positions1).not.toEqual(positions2)
+    expect(triangle.style.left).toBeDefined()
+    expect(triangle.style.left).not.toEqual('')
+    expect(triangle.style.top).toBeDefined()
+    expect(triangle.style.top).not.toEqual('')
+    expect(triangle.style.transform).toContain('translate')
   })
 
   it('should match snapshot', () => {

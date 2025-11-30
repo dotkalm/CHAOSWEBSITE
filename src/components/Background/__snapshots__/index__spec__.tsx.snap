@@ -2,6 +2,40 @@
 
 exports[`Background Component should match snapshot 1`] = `
 <div
-  class="MuiBox-root css-1hqo5cu"
-/>
+  class="MuiBox-root css-17m8voq"
+>
+  <svg
+    class="shape MuiBox-root css-1s2u24d"
+    data-testid="shape-octagon"
+    role="img"
+    viewBox="0 0 144 144"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0,101.6v-59.3L41.9,0h59.7l42.4,42.4v59.3l-42.4,42.4h-59.7L0,101.6Z"
+    />
+  </svg>
+  <svg
+    class="shape MuiBox-root css-1s2u24d"
+    data-testid="shape-square"
+    role="img"
+    viewBox="0 0 126.7 144"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0,0h126.7v144H0V0Z"
+    />
+  </svg>
+  <svg
+    class="shape MuiBox-root css-1s2u24d"
+    data-testid="shape-triangle"
+    role="img"
+    viewBox="0 0 131 144"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M65.5,0l65.5,144H0L65.5,0Z"
+    />
+  </svg>
+</div>
 `;
