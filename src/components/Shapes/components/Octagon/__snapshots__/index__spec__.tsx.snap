@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Octagon Component should match snapshot 1`] = `
+<svg
+  class="shape MuiBox-root css-1vzkiio"
+  data-testid="shape-octagon"
+  role="img"
+  viewBox="0 0 144 144"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M0,101.6v-59.3L41.9,0h59.7l42.4,42.4v59.3l-42.4,42.4h-59.7L0,101.6Z"
+  />
+</svg>
+`;

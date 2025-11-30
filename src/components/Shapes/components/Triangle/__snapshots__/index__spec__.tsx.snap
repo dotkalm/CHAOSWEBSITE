@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Triangle Component should match snapshot 1`] = `
+<svg
+  class="shape MuiBox-root css-1vzkiio"
+  data-testid="shape-triangle"
+  role="img"
+  viewBox="0 0 131 144"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M65.5,0l65.5,144H0L65.5,0Z"
+  />
+</svg>
+`;
