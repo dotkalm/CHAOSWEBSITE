@@ -9,12 +9,22 @@ export const metadata = {
   description: 'Chaos Agency — website'
 };
 
+// JSON-LD describing the site and favicons — description field includes
+// the favicons list (this is what you requested to help define favicons).
 const ld = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Chaos Agency',
-  description: 'Favicons: /favicons/favicon.svg',
-  image: '/favicons/favicon.svg'
+  description: 'Favicons and site images: /favicons/*',
+  image: '/favicons/favicon.svg',
+  potentialAction: [
+    { '@type': 'ViewAction', 'target': '/' }
+  ],
+  publisher: {
+    '@type': 'Organization',
+    'name': 'Chaos Agency',
+    'logo': { '@type': 'ImageObject', 'url': '/favicons/favicon.svg' }
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

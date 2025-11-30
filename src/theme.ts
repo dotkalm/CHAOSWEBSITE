@@ -1,33 +1,33 @@
 import { createTheme } from '@mui/material/styles';
 
-// Theme skeleton — adjust typography values to match reference/design.pdf (page 1)
+// Theme based on design__temp__.pdf (page 1) — colors and type scale
 const theme = createTheme({
   palette: {
-    primary: {
-      main: '#1976d2'
+    primary: { main: '#008700' }, // green from PDF
+    secondary: { main: '#db3adf' }, // magenta/purple
+    error: { main: '#d30000' }, // red
+    warning: { main: '#ffa600' }, // orange
+    background: {
+      default: '#ffffff',
+      paper: '#ffffff'
     },
-    secondary: {
-      main: '#9c27b0'
+    grey: {
+      300: '#d9d9d9', // shapes / accessibility mode
+      500: '#808080' // neutral gray for hover/active text
     }
   },
   typography: {
     fontFamily: ['Inter', 'Roboto', 'Arial', 'sans-serif'].join(','),
-    h1: {
-      fontSize: '3rem',
-      fontWeight: 700
-    },
-    h2: {
-      fontSize: '2rem',
-      fontWeight: 600
-    },
-    h3: {
-      fontSize: '1.5rem',
-      fontWeight: 600
-    },
-    body1: {
-      fontSize: '1rem',
-      lineHeight: 1.6
-    }
+    // Type size guide from PDF:
+    // Type size 1: 13 over 16 (use for body)
+    // Type size 2: 10 over 12
+    // Type size 3: 8 over 10
+    h1: { fontSize: '32px', fontWeight: 700 },
+    h2: { fontSize: '24px', fontWeight: 600 },
+    h3: { fontSize: '20px', fontWeight: 600 },
+    body1: { fontSize: '13px', lineHeight: '16px' },
+    body2: { fontSize: '10px', lineHeight: '12px' },
+    caption: { fontSize: '8px', lineHeight: '10px', color: '#808080' }
   }
 });
 

@@ -1,8 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+/* Font faces - using fonts placed in /public/font. If filenames differ,
+   update the src URLs to match your files. */
+/* NewRailAlphabet font files provided in /public/font - used for headings */
+@font-face {
+  font-family: 'NewRail';
+  src: url('/font/newrailalphabet-bold-webfont.woff2') format('woff2'),
+       url('/font/newrailalphabet-bold-webfont.woff') format('woff'),
+       url('/font/NewRailAlphabet-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NewRail';
+  src: url('/font/newrailalphabet-bolditalic-webfont.woff2') format('woff2'),
+       url('/font/newrailalphabet-bolditalic-webfont.woff') format('woff'),
+       url('/font/NewRailAlphabet-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 
 :root{
   --bg: #ffffff;
   --text: #111111;
+  --color-primary: #008700;
+  --color-secondary: #db3adf;
+  --color-error: #d30000;
+  --color-warning: #ffa600;
+  --color-shape: #d9d9d9;
+  --color-muted: #808080;
 }
 
 html,body,#root{
@@ -14,7 +41,13 @@ html,body{
   padding:0;
   background:var(--bg);
   color:var(--text);
-  font-family: Inter, Roboto, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 a{color:inherit}
+
+/* small util classes matching PDF type scale */
+.type-1 { font-size: 13px; line-height: 16px; }
+.type-2 { font-size: 10px; line-height: 12px; }
+.type-3 { font-size: 8px; line-height: 10px; }
+
