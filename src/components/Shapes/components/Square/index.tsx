@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box'
 
 export interface SquareProps {
-  fill: string
   left?: number
   top?: number
   scale?: number
@@ -9,7 +8,7 @@ export interface SquareProps {
   zIndex?: number
 }
 
-export default function Square({ fill, left, top, scale = 1, rotate = 0, zIndex = 10 }: SquareProps) {
+export default function Square({ left, top, scale = 1, rotate = 0, zIndex = 10 }: SquareProps) {
   const style: React.CSSProperties = {}
   
   if (left !== undefined) {
@@ -33,16 +32,10 @@ export default function Square({ fill, left, top, scale = 1, rotate = 0, zIndex 
       className="shape"
       data-testid="shape-square"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 126.7 144"
+      viewBox="0 0 144 144"
       style={style}
-      sx={{
-        '& path': {
-          fill: fill,
-          strokeWidth: 0
-        }
-      }}
     >
-      <path d="M0,0h126.7v144H0V0Z" />
+      <path d="M0,0h144v144h-144V0Z" />
     </Box>
   )
 }

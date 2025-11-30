@@ -5,10 +5,11 @@ exports[`Background Component should match snapshot 1`] = `
   class="MuiBox-root css-17m8voq"
 >
   <svg
-    class="shape MuiBox-root css-1s2u24d"
+    class="shape MuiBox-root css-18i8pdy"
+    data-fill="#db3adf"
     data-testid="shape-octagon"
     role="img"
-    style="z-index: 10;"
+    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(79deg) scale(1); z-index: 10;"
     viewBox="0 0 144 144"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -17,27 +18,29 @@ exports[`Background Component should match snapshot 1`] = `
     />
   </svg>
   <svg
-    class="shape MuiBox-root css-1s2u24d"
+    class="shape MuiBox-root css-18i8pdy"
+    data-fill="#db3adf"
     data-testid="shape-square"
     role="img"
-    style="z-index: 10;"
-    viewBox="0 0 126.7 144"
+    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(272deg) scale(1); z-index: 10;"
+    viewBox="0 0 144 144"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M0,0h126.7v144H0V0Z"
+      d="M0,0h144v144h-144V0Z"
     />
   </svg>
   <svg
-    class="shape MuiBox-root css-1s2u24d"
+    class="shape MuiBox-root css-18i8pdy"
+    data-fill="#db3adf"
     data-testid="shape-triangle"
     role="img"
-    style="z-index: 10;"
-    viewBox="0 0 131 144"
+    style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(144deg) scale(1); z-index: 10;"
+    viewBox="0 0 144 144"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M65.5,0l65.5,144H0L65.5,0Z"
+      d="M144,144h-144L72.2,0,144,144Z"
     />
   </svg>
 </div>

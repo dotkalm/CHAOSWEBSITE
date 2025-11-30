@@ -3,14 +3,15 @@
 exports[`Square Component should match snapshot 1`] = `
 <svg
   class="shape MuiBox-root css-1vzkiio"
+  data-fill="#000"
   data-testid="shape-square"
   role="img"
   style="z-index: 10;"
-  viewBox="0 0 126.7 144"
+  viewBox="0 0 144 144"
   xmlns="http://www.w3.org/2000/svg"
 >
   <path
-    d="M0,0h126.7v144H0V0Z"
+    d="M0,0h144v144h-144V0Z"
   />
 </svg>
 `;

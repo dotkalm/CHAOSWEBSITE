@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box'
 
 export interface TriangleProps {
-  fill: string
   left?: number
   top?: number
   scale?: number
@@ -9,7 +8,7 @@ export interface TriangleProps {
   zIndex?: number
 }
 
-export default function Triangle({ fill, left, top, scale = 1, rotate = 0, zIndex = 10 }: TriangleProps) {
+export default function Triangle({ left, top, scale = 1, rotate = 0, zIndex = 10 }: TriangleProps) {
   const style: React.CSSProperties = {}
   
   if (left !== undefined) {
@@ -33,16 +32,10 @@ export default function Triangle({ fill, left, top, scale = 1, rotate = 0, zInde
       className="shape"
       data-testid="shape-triangle"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 131 144"
+      viewBox="0 0 144 144"
       style={style}
-      sx={{
-        '& path': {
-          fill: fill,
-          strokeWidth: 0
-        }
-      }}
     >
-      <path d="M65.5,0l65.5,144H0L65.5,0Z" />
+      <path d="M144,144h-144L72.2,0,144,144Z" />
     </Box>
   )
 }

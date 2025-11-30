@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react'
-import { useTheme } from '@mui/material/styles'
+import { useTheme, useMediaQuery } from '@mui/material'
 import { selectRandomShapeColor } from '@/utils'
-import type { ShapeColor } from '@/types'
 
 export function useShapeColor() {
   const theme = useTheme()
-  const [selectedColor] = useState<ShapeColor>(() => selectRandomShapeColor())
-  const fillColor = theme.palette.shapes[selectedColor]
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  
+  const fillColor = isMobile 
+    ? theme.palette.grey[300]
+    : theme.palette.shapes[selectRandomShapeColor()]
 
-  return { selectedColor, fillColor }
+  return { fillColor }
 }
