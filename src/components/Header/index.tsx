@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 
 export default function Header(){
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
       <Toolbar>
         <Typography variant="h6">Chaos Agency</Typography>
       </Toolbar>

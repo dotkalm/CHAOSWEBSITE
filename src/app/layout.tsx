@@ -1,9 +1,9 @@
 import '@/styles/globals.css';
 import MuiProvider from '@/providers/MuiProvider';
+import Background from '@/components/Background';
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import Background from '@/components/Background';
 
 export const metadata = {
   title: 'Chaos Agency',
@@ -48,11 +48,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <MuiProvider>
-          <Background />
           <Header />
           <Navigation />
           <main>{children}</main>
           <Footer />
+          <Background />
         </MuiProvider>
       </body>
     </html>

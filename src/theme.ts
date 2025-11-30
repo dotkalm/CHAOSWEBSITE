@@ -8,8 +8,8 @@ const theme = createTheme({
     error: { main: '#d30000' }, // red
     warning: { main: '#ffa600' }, // orange
     background: {
-      default: '#ffffff',
-      paper: '#ffffff'
+      default: 'transparent',
+      paper: 'transparent'
     },
     grey: {
       300: '#d9d9d9', // shapes / accessibility mode

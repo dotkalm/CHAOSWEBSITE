@@ -13,6 +13,7 @@ export default function Background(){
       height: '100vh',
       backgroundColor: 'dodgerblue',
       zIndex: -9999
-    }} />
+    }}>
+    </Box>
   );
 }
