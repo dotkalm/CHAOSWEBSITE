@@ -1,15 +1,38 @@
 import { createTheme } from '@mui/material/styles';
 
-// Theme based on design__temp__.pdf (page 1) — colors and type scale
+declare module '@mui/material/styles' {
+  interface Palette {
+    shapes: {
+      green: string;
+      purple: string;
+      red: string;
+      orange: string;
+    };
+  }
+
+  interface PaletteOptions {
+    shapes: {
+      green: string;
+      purple: string;
+      red: string;
+      orange: string;
+    };
+  }
+}
+
 const theme = createTheme({
   palette: {
-    primary: { main: '#008700' }, // green from PDF
-    secondary: { main: '#db3adf' }, // magenta/purple
-    error: { main: '#d30000' }, // red
-    warning: { main: '#ffa600' }, // orange
+    shapes: {
+      green: '#008700',
+      purple: '#db3adf',
+      red: '#d30000',
+      orange: '#ffa600'
+    },
+    primary: { main: '#000' }, 
+    secondary: { main: '#000' },
     background: {
       default: 'transparent',
-      paper: 'transparent'
+      paper: 'transparent',
     },
     grey: {
       300: '#d9d9d9', // shapes / accessibility mode
