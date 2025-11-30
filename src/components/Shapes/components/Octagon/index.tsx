@@ -2,9 +2,30 @@ import Box from '@mui/material/Box'
 
 export interface OctagonProps {
   fill: string
+  left?: number
+  top?: number
+  scale?: number
+  rotate?: number
+  zIndex?: number
 }
 
-export default function Octagon({ fill }: OctagonProps) {
+export default function Octagon({ fill, left, top, scale = 1, rotate = 0, zIndex = 10 }: OctagonProps) {
+  const style: React.CSSProperties = {}
+  
+  if (left !== undefined) {
+    style.position = 'absolute'
+    style.left = `${left}%`
+  }
+  if (top !== undefined) {
+    style.top = `${top}%`
+  }
+  if (left !== undefined && top !== undefined) {
+    style.transform = `translate(-50%, -50%) rotate(${rotate}deg) scale(${scale})`
+  }
+  if (zIndex !== undefined) {
+    style.zIndex = zIndex
+  }
+
   return (
     <Box
       component="svg"
@@ -13,6 +34,7 @@ export default function Octagon({ fill }: OctagonProps) {
       data-testid="shape-octagon"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 144 144"
+      style={style}
       sx={{
         '& path': {
           fill: fill,

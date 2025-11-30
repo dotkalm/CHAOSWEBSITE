@@ -5,6 +5,7 @@ exports[`Square Component should match snapshot 1`] = `
   class="shape MuiBox-root css-1vzkiio"
   data-testid="shape-square"
   role="img"
+  style="z-index: 10;"
   viewBox="0 0 126.7 144"
   xmlns="http://www.w3.org/2000/svg"
 >

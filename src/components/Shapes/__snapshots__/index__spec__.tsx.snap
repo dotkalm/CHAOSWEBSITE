@@ -2,9 +2,10 @@
 
 exports[`Shapes Component should match snapshot 1`] = `
 <svg
-  class="shape MuiBox-root css-17zalpi"
+  class="shape MuiBox-root css-18i8pdy"
   data-testid="shape-octagon"
   role="img"
+  style="z-index: 10;"
   viewBox="0 0 144 144"
   xmlns="http://www.w3.org/2000/svg"
 >

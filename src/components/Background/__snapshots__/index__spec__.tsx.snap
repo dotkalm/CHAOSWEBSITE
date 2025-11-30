@@ -5,9 +5,10 @@ exports[`Background Component should match snapshot 1`] = `
   class="MuiBox-root css-17m8voq"
 >
   <svg
-    class="shape MuiBox-root css-1s2u24d"
+    class="shape MuiBox-root css-18i8pdy"
     data-testid="shape-octagon"
     role="img"
+    style="z-index: 10;"
     viewBox="0 0 144 144"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -16,9 +17,10 @@ exports[`Background Component should match snapshot 1`] = `
     />
   </svg>
   <svg
-    class="shape MuiBox-root css-1s2u24d"
+    class="shape MuiBox-root css-18i8pdy"
     data-testid="shape-square"
     role="img"
+    style="z-index: 10;"
     viewBox="0 0 126.7 144"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -27,9 +29,10 @@ exports[`Background Component should match snapshot 1`] = `
     />
   </svg>
   <svg
-    class="shape MuiBox-root css-1s2u24d"
+    class="shape MuiBox-root css-18i8pdy"
     data-testid="shape-triangle"
     role="img"
+    style="z-index: 10;"
     viewBox="0 0 131 144"
     xmlns="http://www.w3.org/2000/svg"
   >
