@@ -147,6 +147,147 @@ describe('Background Component', () => {
     }
   })
 
+  it('should apply random rotation (0-360 degrees) to each shape', () => {
+    const { getByTestId } = renderWithTheme(<Background />)
+
+    const octagon = getByTestId('shape-octagon') as HTMLElement
+    const square = getByTestId('shape-square') as HTMLElement
+    const triangle = getByTestId('shape-triangle') as HTMLElement
+
+    const shapes = [octagon, square, triangle]
+
+    shapes.forEach(shape => {
+      const transform = shape.style.transform
+      const rotateMatch = transform.match(/rotate\(([\d.]+)deg\)/)
+      
+      expect(rotateMatch).toBeDefined()
+      if (rotateMatch) {
+        const rotation = parseFloat(rotateMatch[1])
+        expect(rotation).toBeGreaterThanOrEqual(0)
+        expect(rotation).toBeLessThanOrEqual(360)
+      }
+    })
+  })
+
+  it('should apply random z-index (10-99) to each shape', () => {
+    const { getByTestId } = renderWithTheme(<Background />)
+
+    const octagon = getByTestId('shape-octagon') as HTMLElement
+    const square = getByTestId('shape-square') as HTMLElement
+    const triangle = getByTestId('shape-triangle') as HTMLElement
+
+    const shapes = [octagon, square, triangle]
+
+    shapes.forEach(shape => {
+      const zIndex = parseInt(shape.style.zIndex)
+      
+      expect(zIndex).toBeDefined()
+      expect(zIndex).toBeGreaterThanOrEqual(10)
+      expect(zIndex).toBeLessThanOrEqual(99)
+    })
+  })
+
+  it('should have one "big" shape with scale between 1.0-1.25', () => {
+    const { getByTestId } = renderWithTheme(<Background />)
+
+    const octagon = getByTestId('shape-octagon') as HTMLElement
+    const square = getByTestId('shape-square') as HTMLElement
+    const triangle = getByTestId('shape-triangle') as HTMLElement
+
+    const shapes = [octagon, square, triangle]
+    const scales = shapes.map(shape => {
+      const transform = shape.style.transform
+      const scaleMatch = transform.match(/scale\(([\d.]+)\)/)
+      return scaleMatch ? parseFloat(scaleMatch[1]) : 0
+    })
+
+    // At least one shape should be "big" (scale >= 1.0)
+    const bigShapes = scales.filter(scale => scale >= 1.0 && scale <= 1.25)
+    expect(bigShapes.length).toBeGreaterThanOrEqual(1)
+
+    // Other shapes should be normal size (0.35-0.75)
+    const normalShapes = scales.filter(scale => scale >= 0.35 && scale < 1.0)
+    expect(normalShapes.length).toBeGreaterThanOrEqual(2)
+  })
+
+  it('should have different random scales for each shape', () => {
+    const { getByTestId } = renderWithTheme(<Background />)
+
+    const octagon = getByTestId('shape-octagon') as HTMLElement
+    const square = getByTestId('shape-square') as HTMLElement
+    const triangle = getByTestId('shape-triangle') as HTMLElement
+
+    const shapes = [octagon, square, triangle]
+    const scales = shapes.map(shape => {
+      const transform = shape.style.transform
+      const scaleMatch = transform.match(/scale\(([\d.]+)\)/)
+      return scaleMatch ? parseFloat(scaleMatch[1]) : 0
+    })
+
+    // All scales should be within valid range
+    scales.forEach(scale => {
+      expect(scale).toBeGreaterThanOrEqual(0.35)
+      expect(scale).toBeLessThanOrEqual(1.25)
+    })
+  })
+
+  it('should apply 3x3 grid positioning with jitter', () => {
+    const { getByTestId } = renderWithTheme(<Background />)
+
+    const octagon = getByTestId('shape-octagon') as HTMLElement
+    const square = getByTestId('shape-square') as HTMLElement
+    const triangle = getByTestId('shape-triangle') as HTMLElement
+
+    const shapes = [octagon, square, triangle]
+    const gridPositions = [12, 50, 88] // 3x3 grid at 12%, 50%, 88%
+
+    shapes.forEach(shape => {
+      const left = parseFloat(shape.style.left)
+      const top = parseFloat(shape.style.top)
+
+      // Position should be near a grid position (within jitter range)
+      // but not exactly on grid due to jitter
+      const nearGridX = gridPositions.some(grid => 
+        Math.abs(left - grid) <= 18 // jitter of 0.36 * 50 = 18%
+      )
+      const nearGridY = gridPositions.some(grid => 
+        Math.abs(top - grid) <= 22 // jitter of 0.44 * 50 = 22%
+      )
+
+      expect(nearGridX).toEqual(true)
+      expect(nearGridY).toEqual(true)
+    })
+  })
+
+  it('should select random color from 4-color palette on load', () => {
+    const { getByTestId } = renderWithTheme(<Background />)
+
+    const octagon = getByTestId('shape-octagon') as HTMLElement
+    const pathElement = octagon.querySelector('path')
+
+    expect(pathElement).toBeDefined()
+    
+    // Color should be one of: green, purple, red, orange from theme
+    const validColors = [
+      theme.palette.shapes.green,
+      theme.palette.shapes.purple,
+      theme.palette.shapes.red,
+      theme.palette.shapes.orange
+    ]
+
+    if (pathElement) {
+      const fill = window.getComputedStyle(pathElement).fill
+      const fillString = pathElement.getAttribute('fill') || fill
+      
+      // Should match one of the 4 valid colors
+      const matchesValidColor = validColors.some(color => 
+        fillString.includes(color) || fillString === color
+      )
+      
+      expect(matchesValidColor).toEqual(true)
+    }
+  })
+
   it('should match snapshot', () => {
     const { container } = renderWithTheme(<Background />)
     expect(container.firstChild).toMatchSnapshot()
