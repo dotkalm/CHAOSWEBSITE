@@ -42,9 +42,10 @@ describe('Statements Component', () => {
       
       expect(currentStatement).toBeDefined()
       
-      // If it has attribution, verify it's displayed
+      // If it has attribution, verify it's displayed (with em dash prefix)
       if (currentStatement?.attribution) {
-        const attributionElement = screen.getByText(currentStatement.attribution)
+        const attributionWithDash = `— ${currentStatement.attribution}`
+        const attributionElement = screen.getByText(attributionWithDash)
         expect(attributionElement).toBeInTheDocument()
       }
     })
@@ -57,7 +58,7 @@ describe('Statements Component', () => {
 
   describe('Statement rotation timing', () => {
     it('should change statement after visible duration', async () => {
-      renderWithTheme(<Statements />)
+      const { container } = renderWithTheme(<Statements />)
       
       // Get first statement
       const firstQuote = StatementsData.items.find(item => {
@@ -72,25 +73,23 @@ describe('Statements Component', () => {
       jest.advanceTimersByTime(visibleMs)
       
       await waitFor(() => {
-        // Statement should have changed or hidden
-        const stillVisible = screen.queryByText(firstQuote.quote)
-        expect(stillVisible).toEqual(null)
+        // Container should have opacity 0 (faded out)
+        const section = container.querySelector('section')
+        expect(section).toHaveStyle({ opacity: '0' })
       })
     })
 
     it('should show gap between statements', async () => {
-      renderWithTheme(<Statements />)
+      const { container } = renderWithTheme(<Statements />)
       
       // Advance past visible duration to gap period
       const visibleMs = StatementsData.cycleMs - StatementsData.gapMs
       jest.advanceTimersByTime(visibleMs)
       
       await waitFor(() => {
-        // During gap, no statement should be visible
-        const anyQuoteVisible = StatementsData.items.some(item => {
-          return screen.queryByText(item.quote) !== null
-        })
-        expect(anyQuoteVisible).toEqual(false)
+        // During gap, container should be hidden (opacity 0)
+        const section = container.querySelector('section')
+        expect(section).toHaveStyle({ opacity: '0' })
       })
     })
 
@@ -123,33 +122,25 @@ describe('Statements Component', () => {
   })
 
   describe('Statement shuffling', () => {
-    it('should shuffle statements on mount', () => {
-      const { unmount: unmount1 } = renderWithTheme(<Statements />)
-      
-      // Get first statement from first render
-      const firstRenderStatement = StatementsData.items.find(item => {
-        return screen.queryByText(item.quote) !== null
-      })
-      
-      unmount1()
-      
+    it('should shuffle statements on mount', async () => {
       // Track statements shown across multiple renders
       const shownStatements = new Set<string>()
-      if (firstRenderStatement) {
-        shownStatements.add(firstRenderStatement.quote)
-      }
       
       // Render multiple times to see if order changes
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 10; i++) {
         const { unmount } = renderWithTheme(<Statements />)
         
-        const currentStatement = StatementsData.items.find(item => {
-          return screen.queryByText(item.quote) !== null
+        // Wait for shuffle effect to run
+        await waitFor(() => {
+          const currentStatement = StatementsData.items.find(item => {
+            return screen.queryByText(item.quote) !== null
+          })
+          
+          if (currentStatement) {
+            shownStatements.add(currentStatement.quote)
+          }
+          expect(currentStatement).toBeDefined()
         })
-        
-        if (currentStatement) {
-          shownStatements.add(currentStatement.quote)
-        }
         
         unmount()
       }
@@ -195,7 +186,7 @@ describe('Statements Component', () => {
     })
 
     it('should fade out during gap period', async () => {
-      renderWithTheme(<Statements />)
+      const { container } = renderWithTheme(<Statements />)
       
       // Get initial statement
       const firstStatement = StatementsData.items.find(item => {
@@ -210,9 +201,9 @@ describe('Statements Component', () => {
       jest.advanceTimersByTime(visibleMs)
       
       await waitFor(() => {
-        // Statement should no longer be visible
-        const stillVisible = screen.queryByText(firstStatement.quote)
-        expect(stillVisible).toEqual(null)
+        // Container should fade to opacity 0
+        const section = container.querySelector('section')
+        expect(section).toHaveStyle({ opacity: '0' })
       })
     })
   })
@@ -238,7 +229,8 @@ describe('Statements Component', () => {
       })
       
       if (currentStatement?.attribution) {
-        const attributionElement = screen.getByText(currentStatement.attribution)
+        const attributionWithDash = `— ${currentStatement.attribution}`
+        const attributionElement = screen.getByText(attributionWithDash)
         expect(attributionElement).toBeInTheDocument()
       }
     })
