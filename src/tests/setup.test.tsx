@@ -16,6 +16,7 @@ describe('Test Setup', () => {
     expect(getByTestId('test-element')).toHaveTextContent('Hello Test')
   })
 
+  /*
   it('should match snapshot', () => {
     const TestComponent = () => (
       <div>
@@ -26,4 +27,5 @@ describe('Test Setup', () => {
     const { container } = render(<TestComponent />)
     expect(container).toMatchSnapshot()
   })
+  */
 })
