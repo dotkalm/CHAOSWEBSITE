@@ -11,6 +11,7 @@ import { NavigationTuple, NavigationLabels } from '@/constants';
 export default function Navigation(){
     const pathname = usePathname();
     const theme = useTheme();
+    const notRoot = pathname !== '/';
 
     return (
         <Box component="nav" sx={{
@@ -39,7 +40,7 @@ export default function Navigation(){
                             style={{ textDecoration: 'none' }}
                         >
                             <Typography 
-                                variant="h3"
+                                variant="body1"
                                 sx={{
                                     color: isActive ? theme.palette.grey[500] : 'inherit',
                                     cursor: 'pointer',

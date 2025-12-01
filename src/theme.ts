@@ -48,9 +48,9 @@ const theme = createTheme({
     h1: { fontSize: '32px', fontWeight: 700 },
     h2: { fontSize: '24px', fontWeight: 600 },
     h3: { fontSize: '20px', fontWeight: 600 },
-    body1: { fontSize: '13px', lineHeight: '16px' },
-    body2: { fontSize: '10px', lineHeight: '12px' },
-    caption: { fontSize: '8px', lineHeight: '10px', color: '#808080' }
+    body1: { fontSize: '0.8125rem', lineHeight: '1rem' },
+    body2: { fontSize: '0.625rem', lineHeight: '0.75rem' },
+    caption: { fontSize: '0.5rem', lineHeight: '0.625rem' }
   }
 });
 
