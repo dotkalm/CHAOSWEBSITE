@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '@/theme'
 import Background from './index'
@@ -321,5 +322,103 @@ describe('Background Component', () => {
   it('should match snapshot', () => {
     const { container } = renderWithTheme(<Background />)
     expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('should not change shape colors on pointer events', async () => {
+    const user = userEvent.setup()
+    const { container } = renderWithTheme(<Background />)
+    
+    // Get initial fill colors from all shapes
+    const shapes = container.querySelectorAll('svg path')
+    const initialColors = Array.from(shapes).map(shape => 
+      window.getComputedStyle(shape).fill
+    )
+    
+    // Trigger pointer events using userEvent
+    await user.pointer([
+      { coords: { x: 100, y: 100 } },
+      { coords: { x: 200, y: 200 } },
+      { coords: { x: 300, y: 300 } }
+    ])
+    
+    // Get colors after pointer events
+    const afterColors = Array.from(shapes).map(shape => 
+      window.getComputedStyle(shape).fill
+    )
+    
+    // Colors should remain the same
+    expect(afterColors).toEqual(initialColors)
+  })
+
+  describe('Idle fade behavior', () => {
+    it('should render with usePointer and useIdleFade hooks integrated', async () => {
+      const { container } = renderWithTheme(<Background />)
+      const backgroundBox = container.firstChild as HTMLElement
+      
+      // Component should render successfully
+      expect(backgroundBox).toBeInTheDocument()
+      
+      // Wait for hooks to initialize and set opacity
+      await new Promise(resolve => setTimeout(resolve, 50))
+      
+      // Check computed style (MUI applies via CSS classes, not inline)
+      const computedStyle = window.getComputedStyle(backgroundBox)
+      const opacity = computedStyle.opacity
+      
+      // Opacity should be set by useIdleFade (initial value is 1)
+      expect(opacity).toEqual('1')
+    })
+
+    it('should fade gradually through intermediate opacity values', async () => {
+      // Mock performance.now to control time
+      const mockNow = jest.spyOn(performance, 'now')
+      const startTime = 1000000
+      mockNow.mockReturnValue(startTime)
+      
+      const { container } = renderWithTheme(<Background />)
+      const backgroundBox = container.firstChild as HTMLElement
+      
+      // Wait for initial render
+      await new Promise(resolve => setTimeout(resolve, 50))
+      
+      // Collect opacity values as time progresses past threshold
+      const opacityValues: number[] = []
+      const IDLE_THRESHOLD = 180000
+      const FADE_DURATION = 20000
+      
+      // Sample at: threshold, +5s, +10s, +15s, +20s
+      const sampleTimes = [
+        IDLE_THRESHOLD,
+        IDLE_THRESHOLD + 5000,
+        IDLE_THRESHOLD + 10000,
+        IDLE_THRESHOLD + 15000,
+        IDLE_THRESHOLD + 20000
+      ]
+      
+      for (const time of sampleTimes) {
+        mockNow.mockReturnValue(startTime + time)
+        await new Promise(resolve => setTimeout(resolve, 50))
+        
+        const opacity = parseFloat(window.getComputedStyle(backgroundBox).opacity)
+        opacityValues.push(opacity)
+      }
+      
+      // Verify we have different intermediate values (not just 1 and 0)
+      expect(opacityValues[0]).toEqual(1) // At threshold
+      expect(opacityValues[1]).toBeGreaterThan(0.7) // 25% through fade
+      expect(opacityValues[1]).toBeLessThan(1)
+      expect(opacityValues[2]).toBeGreaterThan(0.4) // 50% through fade
+      expect(opacityValues[2]).toBeLessThan(0.6)
+      expect(opacityValues[3]).toBeGreaterThan(0.1) // 75% through fade
+      expect(opacityValues[3]).toBeLessThan(0.3)
+      expect(opacityValues[4]).toEqual(0) // End of fade
+      
+      // Verify it's a gradual fade (each value should be less than previous)
+      for (let i = 1; i < opacityValues.length; i++) {
+        expect(opacityValues[i]).toBeLessThanOrEqual(opacityValues[i - 1])
+      }
+      
+      mockNow.mockRestore()
+    })
   })
 })
