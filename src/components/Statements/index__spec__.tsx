@@ -1,3 +1,4 @@
+'use client';
 import { render, screen, waitFor } from '@testing-library/react'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '@/theme'

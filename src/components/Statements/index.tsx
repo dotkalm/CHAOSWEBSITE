@@ -21,14 +21,37 @@ export default function Statements(){
       }}
     >
       <Typography variant="body1" component="p">
-        <Typography component="span" className="quote">
+        <Typography 
+          component="span" 
+          className="quote"
+          sx={{
+            opacity: 0,
+            animation: isVisible ? 'line-reveal 80ms ease-out forwards' : 'none',
+            animationDelay: '1s',
+            '@keyframes line-reveal': {
+              from: { opacity: 0 },
+              to: { opacity: 1 }
+            }
+          }}
+        >
           {currentStatement.quote}
         </Typography>
         {currentStatement.attribution && (
           <>
-            {' — '}
-            <Typography component="span">
-              {currentStatement.attribution}
+            {' '}
+            <Typography 
+              component="span"
+              sx={{
+                opacity: 0,
+                animation: isVisible ? 'line-reveal 80ms ease-out forwards' : 'none',
+                animationDelay: '1.333s',
+                '@keyframes line-reveal': {
+                  from: { opacity: 0 },
+                  to: { opacity: 1 }
+                }
+              }}
+            >
+              — {currentStatement.attribution}
             </Typography>
           </>
         )}

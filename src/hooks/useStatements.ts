@@ -10,17 +10,18 @@ interface UseStatementsReturn {
 
 /**
  * Hook that manages statement rotation with shuffling and timing
- * - Shuffles statements on mount
+ * - Shuffles statements on mount (client-side only to avoid hydration mismatch)
  * - Cycles through statements with configurable timing
  * - Manages visibility state (visible during display, hidden during gap)
  */
 export function useStatements(): UseStatementsReturn {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
+  const [shuffledStatements, setShuffledStatements] = useState<StatementItem[]>(StatementsData.items)
 
-  // Shuffle statements once on mount
-  const shuffledStatements = useMemo(() => {
-    return shuffleArray(StatementsData.items)
+  // Shuffle statements once on mount (client-side only)
+  useEffect(() => {
+    setShuffledStatements(shuffleArray(StatementsData.items))
   }, [])
 
   const currentStatement = shuffledStatements[currentIndex]

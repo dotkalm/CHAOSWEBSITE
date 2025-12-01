@@ -40,7 +40,7 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontFamily: ['Inter', 'Roboto', 'Arial', 'sans-serif'].join(','),
+    fontFamily: ['NewRail', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
     // Type size guide from PDF:
     // Type size 1: 13 over 16 (use for body)
     // Type size 2: 10 over 12
