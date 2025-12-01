@@ -1,5 +1,6 @@
 export * from './labels';
 export * from './layout';
+export * from './newsletter';
 export * from './parallax';
 export * from './routes';
 export * from './shapes';
