@@ -44,14 +44,12 @@ export default function Navigation(){
                                 sx={{
                                     color: {
                                         xs: activeMobileColor,
-                                        sm: activeMobileColor,
                                         md: isActive ? theme.palette.grey[500] : 'inherit',
                                     },
                                     cursor: 'pointer',
                                     '&:hover': {
                                         color: {
                                             xs: activeMobileColor,
-                                            sm: activeMobileColor,
                                             md: `${theme.palette.grey[500]} !important`,
                                         }
                                     }
