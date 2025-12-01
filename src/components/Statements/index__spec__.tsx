@@ -1,12 +1,8 @@
-/**
- * Tests for Statements component rotation behavior
- */
-
 import { render, screen, waitFor } from '@testing-library/react'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '@/theme'
 import Statements from './index'
-import statementsData from '@/constants/statements.json'
+import { StatementsData } from '@/constants'
 
 const renderWithTheme = (component: React.ReactElement) => {
   return render(<ThemeProvider theme={theme}>{component}</ThemeProvider>)
@@ -28,7 +24,7 @@ describe('Statements Component', () => {
       renderWithTheme(<Statements />)
       
       // Should find at least one quote from statements.json
-      const hasAnyQuote = statementsData.items.some(item => {
+      const hasAnyQuote = StatementsData.items.some(item => {
         return screen.queryByText(item.quote) !== null
       })
       
@@ -39,7 +35,7 @@ describe('Statements Component', () => {
       renderWithTheme(<Statements />)
       
       // Find the current statement's quote
-      const currentStatement = statementsData.items.find(item => {
+      const currentStatement = StatementsData.items.find(item => {
         return screen.queryByText(item.quote) !== null
       })
       
@@ -63,7 +59,7 @@ describe('Statements Component', () => {
       renderWithTheme(<Statements />)
       
       // Get first statement
-      const firstQuote = statementsData.items.find(item => {
+      const firstQuote = StatementsData.items.find(item => {
         return screen.queryByText(item.quote) !== null
       })
       
@@ -71,7 +67,7 @@ describe('Statements Component', () => {
       if (!firstQuote) return
       
       // Wait for visible duration (cycleMs - gapMs = 11000ms)
-      const visibleMs = statementsData.cycleMs - statementsData.gapMs
+      const visibleMs = StatementsData.cycleMs - StatementsData.gapMs
       jest.advanceTimersByTime(visibleMs)
       
       await waitFor(() => {
@@ -85,12 +81,12 @@ describe('Statements Component', () => {
       renderWithTheme(<Statements />)
       
       // Advance past visible duration to gap period
-      const visibleMs = statementsData.cycleMs - statementsData.gapMs
+      const visibleMs = StatementsData.cycleMs - StatementsData.gapMs
       jest.advanceTimersByTime(visibleMs)
       
       await waitFor(() => {
         // During gap, no statement should be visible
-        const anyQuoteVisible = statementsData.items.some(item => {
+        const anyQuoteVisible = StatementsData.items.some(item => {
           return screen.queryByText(item.quote) !== null
         })
         expect(anyQuoteVisible).toEqual(false)
@@ -101,7 +97,7 @@ describe('Statements Component', () => {
       renderWithTheme(<Statements />)
       
       // Get initial statement
-      const firstQuote = statementsData.items.find(item => {
+      const firstQuote = StatementsData.items.find(item => {
         return screen.queryByText(item.quote) !== null
       })
       
@@ -110,12 +106,12 @@ describe('Statements Component', () => {
       }
       
       // Advance through entire cycle (visible + gap)
-      jest.advanceTimersByTime(statementsData.cycleMs)
+      jest.advanceTimersByTime(StatementsData.cycleMs)
       
       await waitFor(() => {
         // Should show a different statement (or back to first if only 1)
-        const hasNewQuote = statementsData.items.some(item => {
-          if (item.quote === firstQuote.quote && statementsData.items.length > 1) {
+        const hasNewQuote = StatementsData.items.some(item => {
+          if (item.quote === firstQuote.quote && StatementsData.items.length > 1) {
             return false
           }
           return screen.queryByText(item.quote) !== null
@@ -130,7 +126,7 @@ describe('Statements Component', () => {
       const { unmount: unmount1 } = renderWithTheme(<Statements />)
       
       // Get first statement from first render
-      const firstRenderStatement = statementsData.items.find(item => {
+      const firstRenderStatement = StatementsData.items.find(item => {
         return screen.queryByText(item.quote) !== null
       })
       
@@ -146,7 +142,7 @@ describe('Statements Component', () => {
       for (let i = 0; i < 5; i++) {
         const { unmount } = renderWithTheme(<Statements />)
         
-        const currentStatement = statementsData.items.find(item => {
+        const currentStatement = StatementsData.items.find(item => {
           return screen.queryByText(item.quote) !== null
         })
         
@@ -159,7 +155,7 @@ describe('Statements Component', () => {
       
       // If shuffling works, we should see different statements
       // (unless there's only 1 statement)
-      if (statementsData.items.length > 1) {
+      if (StatementsData.items.length > 1) {
         expect(shownStatements.size).toBeGreaterThan(1)
       }
     })
@@ -170,14 +166,14 @@ describe('Statements Component', () => {
       renderWithTheme(<Statements />)
       
       // Advance through multiple complete cycles
-      const totalCycles = statementsData.items.length + 1
-      const totalTime = statementsData.cycleMs * totalCycles
+      const totalCycles = StatementsData.items.length + 1
+      const totalTime = StatementsData.cycleMs * totalCycles
       
       jest.advanceTimersByTime(totalTime)
       
       await waitFor(() => {
         // Should still be showing a statement (has looped back)
-        const hasAnyQuote = statementsData.items.some(item => {
+        const hasAnyQuote = StatementsData.items.some(item => {
           return screen.queryByText(item.quote) !== null
         })
         expect(hasAnyQuote).toEqual(true)
@@ -190,7 +186,7 @@ describe('Statements Component', () => {
       renderWithTheme(<Statements />)
       
       // At least one quote should be visible
-      const hasVisibleQuote = statementsData.items.some(item => {
+      const hasVisibleQuote = StatementsData.items.some(item => {
         return screen.queryByText(item.quote) !== null
       })
       
@@ -201,7 +197,7 @@ describe('Statements Component', () => {
       renderWithTheme(<Statements />)
       
       // Get initial statement
-      const firstStatement = statementsData.items.find(item => {
+      const firstStatement = StatementsData.items.find(item => {
         return screen.queryByText(item.quote) !== null
       })
       
@@ -209,7 +205,7 @@ describe('Statements Component', () => {
         throw new Error('No initial statement found')
       }
       
-      const visibleMs = statementsData.cycleMs - statementsData.gapMs
+      const visibleMs = StatementsData.cycleMs - StatementsData.gapMs
       jest.advanceTimersByTime(visibleMs)
       
       await waitFor(() => {
@@ -225,7 +221,7 @@ describe('Statements Component', () => {
       renderWithTheme(<Statements />)
       
       // At least one quote should be rendered
-      const hasQuote = statementsData.items.some(item => {
+      const hasQuote = StatementsData.items.some(item => {
         return screen.queryByText(item.quote) !== null
       })
       
@@ -236,7 +232,7 @@ describe('Statements Component', () => {
       renderWithTheme(<Statements />)
       
       // Find current statement
-      const currentStatement = statementsData.items.find(item => {
+      const currentStatement = StatementsData.items.find(item => {
         return screen.queryByText(item.quote) !== null
       })
       

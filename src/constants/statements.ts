@@ -1,6 +1,6 @@
 import { StatementsConfig } from "../types";
 
-export const Statements: StatementsConfig = {
+export const StatementsData: StatementsConfig = {
     cycleMs: 12000,
     gapMs: 1000,
     items: [

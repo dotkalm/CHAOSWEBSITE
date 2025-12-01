@@ -54,3 +54,17 @@ export function randomZIndex(): number {
   const range = SHAPE_LAYOUT_CONFIG.Z_INDEX_MAX - SHAPE_LAYOUT_CONFIG.Z_INDEX_MIN + 1
   return SHAPE_LAYOUT_CONFIG.Z_INDEX_MIN + Math.floor(Math.random() * range)
 }
+
+/**
+ * Shuffle an array using Fisher-Yates algorithm
+ * @param items - The array to shuffle
+ * @returns A new shuffled array (does not mutate original)
+ */
+export function shuffleArray<T>(items: T[]): T[] {
+  const arr = items.slice()
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+  return arr
+}
