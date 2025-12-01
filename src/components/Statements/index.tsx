@@ -45,6 +45,7 @@ export default function Statements(){
                 opacity: 0,
                 animation: isVisible ? 'line-reveal 80ms ease-out forwards' : 'none',
                 animationDelay: '1.333s',
+                display: 'block',
                 '@keyframes line-reveal': {
                   from: { opacity: 0 },
                   to: { opacity: 1 }

@@ -79,7 +79,7 @@ a{color:inherit}
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 899px) {
   .layout-grid {
     min-height: 100vh;
     grid-template-columns: 1fr; /* Single column */
