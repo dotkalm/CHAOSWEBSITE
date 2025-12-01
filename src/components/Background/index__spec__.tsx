@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '@/theme'
@@ -361,7 +361,9 @@ describe('Background Component', () => {
       expect(backgroundBox).toBeInTheDocument()
       
       // Wait for hooks to initialize and set opacity
-      await new Promise(resolve => setTimeout(resolve, 50))
+      await act(async () => {
+        await new Promise(resolve => setTimeout(resolve, 50))
+      })
       
       // Check computed style (MUI applies via CSS classes, not inline)
       const computedStyle = window.getComputedStyle(backgroundBox)
@@ -381,7 +383,9 @@ describe('Background Component', () => {
       const backgroundBox = container.firstChild as HTMLElement
       
       // Wait for initial render
-      await new Promise(resolve => setTimeout(resolve, 50))
+      await act(async () => {
+        await new Promise(resolve => setTimeout(resolve, 50))
+      })
       
       // Collect opacity values as time progresses past threshold
       const opacityValues: number[] = []
@@ -399,7 +403,9 @@ describe('Background Component', () => {
       
       for (const time of sampleTimes) {
         mockNow.mockReturnValue(startTime + time)
-        await new Promise(resolve => setTimeout(resolve, 50))
+        await act(async () => {
+          await new Promise(resolve => setTimeout(resolve, 50))
+        })
         
         const opacity = parseFloat(window.getComputedStyle(backgroundBox).opacity)
         opacityValues.push(opacity)
