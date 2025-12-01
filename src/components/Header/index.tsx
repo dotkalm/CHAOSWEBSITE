@@ -15,17 +15,21 @@ export default function Header(){
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
-      <Toolbar>
+    <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none', p: 0 }}>
+      <Toolbar 
+        sx={{
+            p: 0,
+            paddingLeft: '0px !important',
+        }}
+      >
         <Box
           onClick={handleLogoClick}
           sx={{
             cursor: 'pointer',
             display: 'flex',
-            alignItems: 'center',
             height: 40,
-            position: 'relative',
             width: 'auto',
+            padding: 0,
           }}
         >
           <Image

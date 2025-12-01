@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import Box from '@mui/material/Box'
 
 export interface TriangleProps {
@@ -8,7 +9,10 @@ export interface TriangleProps {
   zIndex?: number
 }
 
-export default function Triangle({ left, top, scale = 1, rotate = 0, zIndex = 10 }: TriangleProps) {
+const Triangle = forwardRef<HTMLElement, TriangleProps>(function Triangle(
+  { left, top, scale = 1, rotate = 0, zIndex = 10 },
+  ref
+) {
   const style: React.CSSProperties = {}
   
   if (left !== undefined) {
@@ -27,6 +31,7 @@ export default function Triangle({ left, top, scale = 1, rotate = 0, zIndex = 10
 
   return (
     <Box
+      ref={ref}
       component="svg"
       role="img"
       className="shape"
@@ -38,4 +43,6 @@ export default function Triangle({ left, top, scale = 1, rotate = 0, zIndex = 10
       <path d="M144,144h-144L72.2,0,144,144Z" />
     </Box>
   )
-}
+})
+
+export default Triangle

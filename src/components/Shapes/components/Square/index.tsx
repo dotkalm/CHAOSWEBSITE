@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import Box from '@mui/material/Box'
 
 export interface SquareProps {
@@ -8,7 +9,10 @@ export interface SquareProps {
   zIndex?: number
 }
 
-export default function Square({ left, top, scale = 1, rotate = 0, zIndex = 10 }: SquareProps) {
+const Square = forwardRef<HTMLElement, SquareProps>(function Square(
+  { left, top, scale = 1, rotate = 0, zIndex = 10 },
+  ref
+) {
   const style: React.CSSProperties = {}
   
   if (left !== undefined) {
@@ -27,6 +31,7 @@ export default function Square({ left, top, scale = 1, rotate = 0, zIndex = 10 }
 
   return (
     <Box
+      ref={ref}
       component="svg"
       role="img"
       className="shape"
@@ -38,4 +43,6 @@ export default function Square({ left, top, scale = 1, rotate = 0, zIndex = 10 }
       <path d="M0,0h144v144h-144V0Z" />
     </Box>
   )
-}
+})
+
+export default Square

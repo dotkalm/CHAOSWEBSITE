@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import Box from '@mui/material/Box'
 
 export interface OctagonProps {
@@ -8,7 +9,10 @@ export interface OctagonProps {
   zIndex?: number
 }
 
-export default function Octagon({ left, top, scale = 1, rotate = 0, zIndex = 10 }: OctagonProps) {
+const Octagon = forwardRef<HTMLElement, OctagonProps>(function Octagon(
+  { left, top, scale = 1, rotate = 0, zIndex = 10 },
+  ref
+) {
   const style: React.CSSProperties = {}
   
   if (left !== undefined) {
@@ -27,6 +31,7 @@ export default function Octagon({ left, top, scale = 1, rotate = 0, zIndex = 10 
 
   return (
     <Box
+      ref={ref}
       component="svg"
       role="img"
       className="shape"
@@ -38,4 +43,6 @@ export default function Octagon({ left, top, scale = 1, rotate = 0, zIndex = 10 
       <path d="M0,101.6v-59.3L41.9,0h59.7l42.4,42.4v59.3l-42.4,42.4h-59.7L0,101.6Z" />
     </Box>
   )
-}
+})
+
+export default Octagon

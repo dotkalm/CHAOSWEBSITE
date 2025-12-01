@@ -13,13 +13,20 @@ export default function Navigation(){
     const theme = useTheme();
 
     return (
-        <Box component="nav" sx={
-            {
-                display: 'flex',
-                gap: 2,
-                p: 2
+        <Box component="nav" sx={{
+            display: 'flex',
+            gap: {
+                xs: 2,
+                md: .5,
+            },
+            flexDirection: {
+                xs: 'row',
+                md: 'column'
+            },
+            zIndex: {
+                md: 1000
             }
-        }
+        }}
         >
             {
                 NavigationTuple.map((route) => {
@@ -32,7 +39,7 @@ export default function Navigation(){
                             style={{ textDecoration: 'none' }}
                         >
                             <Typography 
-                                variant="h1"
+                                variant="h3"
                                 sx={{
                                     color: isActive ? theme.palette.grey[500] : 'inherit',
                                     cursor: 'pointer',
