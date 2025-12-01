@@ -82,6 +82,8 @@ export default function Subscribe() {
           onBlur={handleBlur}
           onChange={handleChange}
           component="input"
+          type="email"
+          autoComplete="email"
           value={enteredText && enteredText}
           placeholder={labels.placeholder}
           sx={{
@@ -112,7 +114,6 @@ export default function Subscribe() {
             whiteSpace: 'nowrap',
             '&:hover': {
               cursor: 'pointer',
-              backgroundColor: 'rgba(0, 0, 0, 0.05)',
             }
           }}
         >
