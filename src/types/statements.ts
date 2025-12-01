@@ -1,6 +1,6 @@
 export interface StatementItem {
   quote: string;
-  attribution?: string;
+  attribution: string;
 }
 
 export interface StatementsConfig {
