@@ -38,18 +38,18 @@ html,body,#root{
 
 html,body{
   margin:0;
-  padding-left: 3em;
-  padding-top: 1.5em;
   background:transparent;
   color:var(--text);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+
 }
 
 @media (max-width: 899px) {
   html,body {
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    padding-top: 1em;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
   }
 }
 
@@ -60,3 +60,57 @@ a{color:inherit}
 .type-2 { font-size: 10px; line-height: 12px; }
 .type-3 { font-size: 8px; line-height: 10px; }
 
+
+.layout-grid {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "nav main"
+    "footer footer";
+  padding: 24px; /* or whatever value you want */
+  box-sizing: border-box; /* padding stays within 100vh */
+}
+
+@media (max-width: 768px) {
+  .layout-grid {
+    grid-template-columns: 1fr; /* Single column */
+    grid-template-rows: auto auto 1fr auto; /* header, nav, main, footer */
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "footer";
+    
+    column-gap: 0; /* No column gap needed */
+    padding: 16px; /* Optionally reduce padding on mobile */
+  }
+}
+
+.layout-grid > header {
+  grid-area: header;
+  margin-bottom: 1rem;
+}
+
+.layout-grid > nav {
+  grid-area: nav;
+}
+
+.layout-grid > main {
+  grid-area: main;
+  overflow-y: auto; /* if content scrolls */
+}
+
+.layout-grid > footer {
+  grid-area: footer;
+}
+
+.layout-grid > .background {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  z-index: -1;
+  pointer-events: none;
+}

@@ -48,11 +48,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <MuiProvider>
-          <Header />
-          <Navigation />
-          <main>{children}</main>
-          <Footer />
-          <Background />
+          <div className="layout-grid">
+            <Header />
+            <Navigation />
+            <main>{children}</main>
+            <Footer />
+            <Background />
+          </div>
         </MuiProvider>
       </body>
     </html>

@@ -7,14 +7,7 @@ import { Labels } from '@/constants';
 
 export default function Footer(){
     return (
-        <Box component="footer" sx={
-            {
-                position: 'fixed',
-                bottom: 35,
-                left: 40,
-            }
-        }
-        >
+        <Box component="footer">
             <Typography variant="h3">{Labels.ACCESSIBILITY}</Typography>
         </Box>
     );

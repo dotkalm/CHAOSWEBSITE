@@ -15,7 +15,8 @@ export default function Background(){
   const opacity = useIdleFade(lastMoveTime)
   
   return (
-    <Box 
+    <Box
+      className=".background"
       sx={{
         position: 'fixed',
         top: 0,
