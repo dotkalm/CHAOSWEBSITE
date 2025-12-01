@@ -6,12 +6,11 @@ import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Link from 'next/link';
 import Typography from '@mui/material/Typography';
-import { NavigationTuple, NavigationLabels } from '@/constants';
+import { NavigationTuple, NavigationLabels, NavigationColors } from '@/constants';
 
 export default function Navigation(){
     const pathname = usePathname();
     const theme = useTheme();
-    const notRoot = pathname !== '/';
 
     return (
         <Box component="nav" sx={{
@@ -32,6 +31,7 @@ export default function Navigation(){
             {
                 NavigationTuple.map((route) => {
                     const isActive = pathname === route;
+                    const activeMobileColor = isActive ? theme.palette.shapes[NavigationColors[route]] : theme.palette.primary.main;
                     
                     return (
                         <Link 
@@ -42,10 +42,18 @@ export default function Navigation(){
                             <Typography 
                                 variant="body1"
                                 sx={{
-                                    color: isActive ? theme.palette.grey[500] : 'inherit',
+                                    color: {
+                                        xs: activeMobileColor,
+                                        sm: activeMobileColor,
+                                        md: isActive ? theme.palette.grey[500] : 'inherit',
+                                    },
                                     cursor: 'pointer',
                                     '&:hover': {
-                                        color: `${theme.palette.grey[500]} !important`,
+                                        color: {
+                                            xs: activeMobileColor,
+                                            sm: activeMobileColor,
+                                            md: `${theme.palette.grey[500]} !important`,
+                                        }
                                     }
                                 }}
                             >

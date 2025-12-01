@@ -12,6 +12,13 @@ export const NavigationLabels: Record<Routes, string> = {
     [Routes.PODCAST]: 'Podcast',
 };
 
+export const NavigationColors: Record<Routes, 'green' | 'purple' | 'red' | 'orange'> = {
+    [Routes.MISSION]: 'green',
+    [Routes.ABOUT]: 'purple',
+    [Routes.PODCAST]: 'red',
+    [Routes.CONTACT]: 'orange',
+};
+
 export const NavigationTuple = [
     Routes.MISSION,
     Routes.ABOUT,
