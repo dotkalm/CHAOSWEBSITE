@@ -24,9 +24,9 @@ export default function Shapes() {
     z: number
   }>>([])
 
-  // Build shapes array for parallax when refs are ready
+  // Build shapes array for parallax when refs are ready (only once)
   useEffect(() => {
-    if (octagonRef.current && squareRef.current && triangleRef.current) {
+    if (octagonRef.current && squareRef.current && triangleRef.current && shapesRef.current.length === 0) {
       shapesRef.current = [
         {
           node: octagonRef.current,

@@ -217,7 +217,7 @@ describe('Background Component', () => {
     })
   })
 
-  it('should have one "big" shape with scale between 1.0-1.25', () => {
+  it('should have one "big" shape with scale between 0.85-1.1', () => {
     const { getByTestId } = renderWithTheme(<Background />)
 
     const octagon = getByTestId('shape-octagon') as HTMLElement
@@ -231,12 +231,12 @@ describe('Background Component', () => {
       return scaleMatch ? parseFloat(scaleMatch[1]) : 0
     })
 
-    // At least one shape should be "big" (scale >= 1.0)
-    const bigShapes = scales.filter(scale => scale >= 1.0 && scale <= 1.25)
+    // At least one shape should be "big" (scale >= 0.85)
+    const bigShapes = scales.filter(scale => scale >= 0.85 && scale <= 1.1)
     expect(bigShapes.length).toBeGreaterThanOrEqual(1)
 
-    // Other shapes should be normal size (0.35-0.75)
-    const normalShapes = scales.filter(scale => scale >= 0.35 && scale < 1.0)
+    // Other shapes should be normal size (0.6-0.9)
+    const normalShapes = scales.filter(scale => scale >= 0.6 && scale < 0.95)
     expect(normalShapes.length).toBeGreaterThanOrEqual(2)
   })
 
@@ -256,8 +256,8 @@ describe('Background Component', () => {
 
     // All scales should be within valid range
     scales.forEach(scale => {
-      expect(scale).toBeGreaterThanOrEqual(0.35)
-      expect(scale).toBeLessThanOrEqual(1.25)
+      expect(scale).toBeGreaterThanOrEqual(0.6)
+      expect(scale).toBeLessThanOrEqual(1.1)
     })
   })
 

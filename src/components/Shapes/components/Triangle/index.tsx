@@ -13,7 +13,9 @@ const Triangle = forwardRef<HTMLElement, TriangleProps>(function Triangle(
   { left, top, scale = 1, rotate = 0, zIndex = 10 },
   ref
 ) {
-  const style: React.CSSProperties = {}
+  const style: React.CSSProperties = {
+    willChange: 'transform',
+  }
   
   if (left !== undefined) {
     style.position = 'absolute'
@@ -38,6 +40,8 @@ const Triangle = forwardRef<HTMLElement, TriangleProps>(function Triangle(
       data-testid="shape-triangle"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 144 144"
+      width="144"
+      height="144"
       style={style}
     >
       <path d="M144,144h-144L72.2,0,144,144Z" />
