@@ -143,60 +143,8 @@ describe('Pointer Events', () => {
       
       expect(backgroundBox).toBeInTheDocument()
     })
-  })})
   })
 
-  describe('Coordinate normalization requirements', () => {
-    it('should have shapes positioned within viewport bounds', () => {
-      const { getByTestId } = renderWithTheme(<Background />)
-      
-      const shapes = [
-        getByTestId('shape-octagon') as HTMLElement,
-        getByTestId('shape-square') as HTMLElement,
-        getByTestId('shape-triangle') as HTMLElement
-      ]
-      
-      shapes.forEach(shape => {
-        const left = parseFloat(shape.style.left)
-        const top = parseFloat(shape.style.top)
-        
-        // Positions should be percentage values
-        expect(left).toBeGreaterThanOrEqual(0)
-        expect(left).toBeLessThanOrEqual(100)
-        expect(top).toBeGreaterThanOrEqual(0)
-        expect(top).toBeLessThanOrEqual(100)
-      })
-    })
-
-    it('should maintain shape transforms during pointer events', () => {
-      const { container, getByTestId } = renderWithTheme(<Background />)
-      const backgroundBox = container.firstChild as HTMLElement
-      const octagon = getByTestId('shape-octagon') as HTMLElement
-      
-      // Get initial transform
-      const initialTransform = octagon.style.transform
-      expect(initialTransform).toBeDefined()
-      expect(initialTransform).not.toEqual('')
-      
-      // Simulate pointer event
-      fireEvent.pointerMove(backgroundBox, {
-        clientX: 200,
-        clientY: 200,
-        pointerType: 'mouse'
-      })
-      
-      // Transform should still exist (even if not yet animated)
-      const afterTransform = octagon.style.transform
-      expect(afterTransform).toBeDefined()
-      expect(afterTransform).not.toEqual('')
-    })
-  })
-
-  describe('Passive event listener requirements', () => {
-    it('should not prevent default browser behavior', () => {
-      const { container } = renderWithTheme(<Background />)
-      
-      // Create a pointer event that would normally be preventable
   describe('Coordinate normalization requirements', () => {
     it('should have shapes positioned within viewport bounds', () => {
       const { getByTestId } = renderWithTheme(<Background />)
@@ -258,3 +206,4 @@ describe('Pointer Events', () => {
       expect(getByTestId('shape-triangle')).toBeInTheDocument()
     })
   })
+})

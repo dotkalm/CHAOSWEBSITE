@@ -1,7 +1,3 @@
-/**
- * Unit tests for grid-based shape positioning utilities
- */
-
 import { jitter, clampRange, randomZIndex } from './math'
 
 describe('Grid Positioning Utilities', () => {
