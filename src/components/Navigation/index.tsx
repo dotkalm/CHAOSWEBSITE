@@ -11,6 +11,7 @@ import { NavigationTuple, NavigationLabels, NavigationColors } from '@/constants
 export default function Navigation(){
     const pathname = usePathname();
     const theme = useTheme();
+    console.log(pathname)
 
     return (
         <Box 
