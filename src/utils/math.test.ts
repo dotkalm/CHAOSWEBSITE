@@ -32,11 +32,11 @@ describe('Math Utilities', () => {
   })
 
   describe('randomNormalScale', () => {
-    it('should return scale between 0.35 and 0.75', () => {
+    it('should return scale between 0.6 and 0.9', () => {
       for (let i = 0; i < 100; i++) {
         const scale = randomNormalScale()
-        expect(scale).toBeGreaterThanOrEqual(0.35)
-        expect(scale).toBeLessThanOrEqual(0.75)
+        expect(scale).toBeGreaterThanOrEqual(0.6)
+        expect(scale).toBeLessThanOrEqual(0.9)
       }
     })
 
@@ -50,18 +50,18 @@ describe('Math Utilities', () => {
     it('should have reasonable distribution', () => {
       const scales = Array.from({ length: 1000 }, () => randomNormalScale())
       const avg = scales.reduce((sum, s) => sum + s, 0) / scales.length
-      // Average should be near midpoint (0.55)
-      expect(avg).toBeGreaterThan(0.50)
-      expect(avg).toBeLessThan(0.60)
+      // Average should be near midpoint (0.75)
+      expect(avg).toBeGreaterThan(0.70)
+      expect(avg).toBeLessThan(0.80)
     })
   })
 
   describe('randomBigScale', () => {
-    it('should return scale between 1.0 and 1.25', () => {
+    it('should return scale between 0.85 and 1.1', () => {
       for (let i = 0; i < 100; i++) {
         const scale = randomBigScale()
-        expect(scale).toBeGreaterThanOrEqual(1.0)
-        expect(scale).toBeLessThanOrEqual(1.25)
+        expect(scale).toBeGreaterThanOrEqual(0.85)
+        expect(scale).toBeLessThanOrEqual(1.1)
       }
     })
 
@@ -75,9 +75,9 @@ describe('Math Utilities', () => {
     it('should have reasonable distribution', () => {
       const scales = Array.from({ length: 1000 }, () => randomBigScale())
       const avg = scales.reduce((sum, s) => sum + s, 0) / scales.length
-      // Average should be near midpoint (1.125)
-      expect(avg).toBeGreaterThan(1.10)
-      expect(avg).toBeLessThan(1.15)
+      // Average should be near midpoint (0.975)
+      expect(avg).toBeGreaterThan(0.93)
+      expect(avg).toBeLessThan(1.02)
     })
   })
 })
