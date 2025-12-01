@@ -1,6 +1,7 @@
 import { COPY } from '@/constants';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { styles } from '@/styles/styles';
 
 export default function AboutPage(){
     return (
@@ -9,6 +10,7 @@ export default function AboutPage(){
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 3,
+                ...styles.main
             }}
         >
             <Typography 

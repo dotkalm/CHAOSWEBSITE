@@ -20,14 +20,14 @@ export default function Navigation(){
                 display: 'flex',
                 gap: {
                     xs: 2,
-                    md: .5,
+                    sm: .5,
                 },
                 flexDirection: {
                     xs: 'row',
-                    md: 'column'
+                    sm: 'column'
                 },
                 zIndex: {
-                    md: 1000
+                    sm: 1000
                 }
             }}
         >
@@ -47,13 +47,13 @@ export default function Navigation(){
                                 sx={{
                                     color: {
                                         xs: activeMobileColor,
-                                        md: isActive ? theme.palette.grey[500] : 'inherit',
+                                        sm: isActive ? theme.palette.grey[500] : 'inherit',
                                     },
                                     cursor: 'pointer',
                                     '&:hover': {
                                         color: {
                                             xs: activeMobileColor,
-                                            md: `${theme.palette.grey[500]} !important`,
+                                            sm: `${theme.palette.grey[500]} !important`,
                                         }
                                     }
                                 }}

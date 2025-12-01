@@ -57,6 +57,14 @@ html,body{
 
 a{color:inherit}
 
+/* Text justification with hyphenation */
+p {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
 /* small util classes matching PDF type scale */
 .type-1 { font-size: 13px; line-height: 16px; }
 .type-2 { font-size: 10px; line-height: 12px; }
@@ -79,7 +87,7 @@ a{color:inherit}
   box-sizing: border-box;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 599px) {
   .layout-grid {
     min-height: 100vh;
     grid-template-columns: 1fr; /* Single column */
