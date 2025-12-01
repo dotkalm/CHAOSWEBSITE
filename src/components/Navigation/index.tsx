@@ -13,33 +13,35 @@ export default function Navigation(){
     const theme = useTheme();
 
     return (
-        <Box component="nav" sx={{
-            display: 'flex',
-            gap: {
-                xs: 2,
-                md: .5,
-            },
-            flexDirection: {
-                xs: 'row',
-                md: 'column'
-            },
-            zIndex: {
-                md: 1000
-            }
-        }}
+        <Box 
+            component="nav"
+            sx={{
+                display: 'flex',
+                gap: {
+                    xs: 2,
+                    md: .5,
+                },
+                flexDirection: {
+                    xs: 'row',
+                    md: 'column'
+                },
+                zIndex: {
+                    md: 1000
+                }
+            }}
         >
             {
                 NavigationTuple.map((route) => {
                     const isActive = pathname === route;
                     const activeMobileColor = isActive ? theme.palette.shapes[NavigationColors[route]] : theme.palette.primary.main;
-                    
+
                     return (
-                        <Link 
-                            href={route} 
+                        <Link
+                            href={route}
                             key={NavigationLabels[route]}
                             style={{ textDecoration: 'none' }}
                         >
-                            <Typography 
+                            <Typography
                                 variant="body1"
                                 sx={{
                                     color: {
