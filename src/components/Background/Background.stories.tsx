@@ -135,3 +135,81 @@ export const OriginalSite: Story = {
     bigScaleMax: 1.25,
   },
 }
+
+// Mobile viewport (375x667 - iPhone SE)
+export const Mobile: Story = {
+  args: {
+    normalScaleMin: SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MIN,
+    normalScaleMax: SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MAX,
+    bigScaleMin: SHAPE_LAYOUT_CONFIG.BIG_SCALE_MIN,
+    bigScaleMax: SHAPE_LAYOUT_CONFIG.BIG_SCALE_MAX,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile',
+    },
+    chromatic: {
+      viewports: [375],
+    },
+  },
+}
+
+// Mobile Small (320x568 - iPhone 5)
+export const MobileSmall: Story = {
+  args: {
+    normalScaleMin: SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MIN,
+    normalScaleMax: SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MAX,
+    bigScaleMin: SHAPE_LAYOUT_CONFIG.BIG_SCALE_MIN,
+    bigScaleMax: SHAPE_LAYOUT_CONFIG.BIG_SCALE_MAX,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobileSmall',
+    },
+  },
+}
+
+// Mobile Large (390x844 - iPhone 12 Pro)
+export const MobileLarge: Story = {
+  args: {
+    normalScaleMin: SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MIN,
+    normalScaleMax: SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MAX,
+    bigScaleMin: SHAPE_LAYOUT_CONFIG.BIG_SCALE_MIN,
+    bigScaleMax: SHAPE_LAYOUT_CONFIG.BIG_SCALE_MAX,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobileLarge',
+    },
+  },
+}
+
+// Tablet viewport (768x1024 - iPad)
+export const Tablet: Story = {
+  args: {
+    normalScaleMin: SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MIN,
+    normalScaleMax: SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MAX,
+    bigScaleMin: SHAPE_LAYOUT_CONFIG.BIG_SCALE_MIN,
+    bigScaleMax: SHAPE_LAYOUT_CONFIG.BIG_SCALE_MAX,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'tablet',
+    },
+  },
+}
+
+// Desktop Large viewport
+export const DesktopLarge: Story = {
+  args: {
+    normalScaleMin: SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MIN,
+    normalScaleMax: SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MAX,
+    bigScaleMin: SHAPE_LAYOUT_CONFIG.BIG_SCALE_MIN,
+    bigScaleMax: SHAPE_LAYOUT_CONFIG.BIG_SCALE_MAX,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'desktopLarge',
+    },
+  },
+}
