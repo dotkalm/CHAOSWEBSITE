@@ -7,7 +7,6 @@
   src: url('/font/newrailalphabet-bold-webfont.woff2') format('woff2'),
        url('/font/newrailalphabet-bold-webfont.woff') format('woff'),
        url('/font/NewRailAlphabet-Bold.otf') format('opentype');
-  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -16,7 +15,6 @@
   src: url('/font/newrailalphabet-bolditalic-webfont.woff2') format('woff2'),
        url('/font/newrailalphabet-bolditalic-webfont.woff') format('woff'),
        url('/font/NewRailAlphabet-BoldItalic.otf') format('opentype');
-  font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
@@ -77,15 +75,13 @@ a{color:inherit}
     "footer footer";
   row-gap: 20px;
   column-gap: 20px;
-  padding: 24px;
+  padding: 48px;
   box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
   .layout-grid {
-    --padding-x: 3em;
-    --padding-y: 2em;
-    min-height: calc(100vh - var(--padding-y) * 4);
+    min-height: 100vh;
     grid-template-columns: 1fr; /* Single column */
     grid-template-rows: auto auto 1fr auto; /* header, nav, main, footer */
     grid-template-areas:
@@ -94,9 +90,9 @@ a{color:inherit}
       "main"
       "footer";
     
+    row-gap: 40px;
     column-gap: 0;
-    padding-inline: var(--padding-x);
-    padding-block: var(--padding-y);
+    padding: 40px;
   }
 }
 
