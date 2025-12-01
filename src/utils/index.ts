@@ -1,2 +1,3 @@
-export * from './shapes'
-export * from './math'
+export * from './math';
+export * from './newsletterHelper';
+export * from './shapes';

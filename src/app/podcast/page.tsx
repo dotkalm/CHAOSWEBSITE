@@ -1,5 +1,7 @@
+import Subscribe from "@/components/Subscribe";
+
 export default function PodcastPage(){
-  return <>
-    <h1>Podcast</h1>
-  </>;
-}
+  return (
+    <Subscribe />
+  );
+};
