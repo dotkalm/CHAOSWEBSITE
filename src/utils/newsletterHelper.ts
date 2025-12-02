@@ -1,8 +1,10 @@
-import { TNewsletterFormData } from '@/types';
-
 export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export const subscribeToNewsletter = async (data: TNewsletterFormData): Promise<string | Error> => {
+interface NewsletterFormData {
+    email: string;
+}
+
+export const subscribeToNewsletter = async (data: NewsletterFormData): Promise<string | Error> => {
     try {
         const response = await fetch('/api/subscribe', {
             method: 'POST',

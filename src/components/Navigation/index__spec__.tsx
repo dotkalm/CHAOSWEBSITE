@@ -47,7 +47,7 @@ describe('Navigation Component', () => {
       expect(screen.getByText(NavigationLabels[Routes.MISSION])).toBeInTheDocument()
       expect(screen.getByText(NavigationLabels[Routes.ABOUT])).toBeInTheDocument()
       expect(screen.getByText(NavigationLabels[Routes.PODCAST])).toBeInTheDocument()
-      expect(screen.getByText(NavigationLabels[Routes.CONTACT])).toBeInTheDocument()
+      expect(screen.getByText('Contact Us')).toBeInTheDocument()
     })
   })
 })

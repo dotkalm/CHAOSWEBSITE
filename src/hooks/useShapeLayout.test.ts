@@ -89,33 +89,33 @@ describe('useShapeLayout', () => {
   })
 
   describe('Scale', () => {
-    it('should have exactly one big shape (scale >= 0.85)', () => {
+    it('should have exactly one big shape (scale >= 2.4)', () => {
       const { result } = renderHook(() => useShapeLayout())
       
-      const bigShapes = result.current.layouts.filter(l => l.scale >= 0.85)
+      const bigShapes = result.current.layouts.filter(l => l.scale >= 2.4)
       
       expect(bigShapes.length).toBeGreaterThanOrEqual(1)
     })
 
-    it('should have big shape scale between 0.85-1.1', () => {
+    it('should have big shape scale between 2.4-3.6', () => {
       const { result } = renderHook(() => useShapeLayout())
       
       const scales = result.current.layouts.map(l => l.scale)
       const maxScale = Math.max(...scales)
       
-      expect(maxScale).toBeGreaterThanOrEqual(0.85)
-      expect(maxScale).toBeLessThanOrEqual(1.1)
+      expect(maxScale).toBeGreaterThanOrEqual(2.4)
+      expect(maxScale).toBeLessThanOrEqual(3.6)
     })
 
-    it('should have normal shapes scale between 0.6-0.9', () => {
+    it('should have normal shapes scale between 1.65-2.3', () => {
       const { result } = renderHook(() => useShapeLayout())
       
-      const normalShapes = result.current.layouts.filter(l => l.scale < 0.9)
+      const normalShapes = result.current.layouts.filter(l => l.scale < 2.4)
       
       expect(normalShapes.length).toBeGreaterThanOrEqual(2)
       normalShapes.forEach(shape => {
-        expect(shape.scale).toBeGreaterThanOrEqual(0.6)
-        expect(shape.scale).toBeLessThanOrEqual(0.9)
+        expect(shape.scale).toBeGreaterThanOrEqual(1.65)
+        expect(shape.scale).toBeLessThanOrEqual(2.3)
       })
     })
   })
