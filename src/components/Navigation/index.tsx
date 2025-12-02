@@ -7,7 +7,12 @@ import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Link from 'next/link';
 import Typography from '@mui/material/Typography';
-import { NavigationTuple, NavigationLabels, NavigationColors } from '@/constants';
+import {
+    COPY,
+    NavigationTuple,
+    NavigationLabels,
+    NavigationColors,
+} from '@/constants';
 
 export default function Navigation(){
     const pathname = usePathname();
@@ -27,8 +32,23 @@ export default function Navigation(){
         return () => window.removeEventListener('a11yChange', handleA11yChange);
     }, []);
 
+    const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        const email = COPY.contact.email;
+        
+        // Try to open mailto
+        window.location.href = `mailto:${email}`;
+        
+        // Fallback: copy to clipboard silently after a brief delay
+        setTimeout(() => {
+            navigator.clipboard.writeText(email).catch(() => {
+                // Silently fail if clipboard access is denied
+            });
+        }, 500);
+    };
+
     return (
-        <Box 
+        <Box
             component="nav"
             sx={{
                 display: 'flex',
@@ -79,6 +99,28 @@ export default function Navigation(){
                     );
                 })
             }
+            <a
+                href={`mailto:${COPY.contact.email}`}
+                onClick={handleContactClick}
+                style={{ textDecoration: 'none' }}
+            >
+                <Typography
+                    variant="body1"
+                    sx={{
+                        color: {
+                            xs: theme.palette.primary.main,
+                        },
+                        cursor: 'pointer',
+                        '&:hover': {
+                            color: {
+                                xs: `${theme.palette.grey[500]} !important`,
+                            }
+                        }
+                    }}
+                >
+                    {COPY.contact.label}
+                </Typography>
+            </a>
         </Box>
     );
 }

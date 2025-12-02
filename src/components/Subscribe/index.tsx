@@ -149,6 +149,7 @@ export default function Subscribe() {
                             variant='body1'
                             sx={{
                                 paddingLeft: '.5rem',
+                                color: '#000',
                             }}
                         >
                             {labels.subscribe}
