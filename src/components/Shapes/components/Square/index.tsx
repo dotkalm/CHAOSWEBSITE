@@ -1,5 +1,4 @@
 import { forwardRef } from 'react'
-import Box from '@mui/material/Box'
 
 export interface SquareProps {
   left?: number
@@ -9,16 +8,18 @@ export interface SquareProps {
   zIndex?: number
 }
 
-const Square = forwardRef<HTMLElement, SquareProps>(function Square(
+const Square = forwardRef<SVGSVGElement, SquareProps>(function Square(
   { left, top, scale = 1, rotate = 0, zIndex = 10 },
   ref
 ) {
   const style: React.CSSProperties = {
     willChange: 'transform',
+    position: 'absolute',
+    width: '50vmin',
+    height: '50vmin',
   }
   
   if (left !== undefined) {
-    style.position = 'absolute'
     style.left = `${left}%`
   }
   if (top !== undefined) {
@@ -32,20 +33,17 @@ const Square = forwardRef<HTMLElement, SquareProps>(function Square(
   }
 
   return (
-    <Box
+    <svg
       ref={ref}
-      component="svg"
       role="img"
       className="shape"
       data-testid="shape-square"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 144 144"
-      width="144"
-      height="144"
       style={style}
     >
       <path d="M0,0h144v144h-144V0Z" />
-    </Box>
+    </svg>
   )
 })
 

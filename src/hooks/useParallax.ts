@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { PARALLAX_CONFIG } from '@/constants'
 
 interface ShapeBaseState {
-  node: HTMLElement
+  node: SVGSVGElement
   left: number
   top: number
   scale: number
@@ -54,10 +54,13 @@ export function useParallax(
         const top = shape.top + dy * factor
         const rot = shape.rotate + (dx - dy) * rotationScale * depth
         
+        // Ensure scale is valid
+        const scaleValue = typeof shape.scale === 'number' && !isNaN(shape.scale) && shape.scale > 0 ? shape.scale : 1
+        
         // Update DOM
         shape.node.style.left = `${left * 100}%`
         shape.node.style.top = `${top * 100}%`
-        shape.node.style.transform = `translate(-50%, -50%) rotate(${rot}deg) scale(${shape.scale})`
+        shape.node.style.transform = `translate(-50%, -50%) rotate(${rot}deg) scale(${scaleValue})`
       })
 
       rafIdRef.current = requestAnimationFrame(tick)

@@ -1,5 +1,4 @@
 import { forwardRef } from 'react'
-import Box from '@mui/material/Box'
 
 export interface TriangleProps {
   left?: number
@@ -9,16 +8,18 @@ export interface TriangleProps {
   zIndex?: number
 }
 
-const Triangle = forwardRef<HTMLElement, TriangleProps>(function Triangle(
+const Triangle = forwardRef<SVGSVGElement, TriangleProps>(function Triangle(
   { left, top, scale = 1, rotate = 0, zIndex = 10 },
   ref
 ) {
   const style: React.CSSProperties = {
     willChange: 'transform',
+    position: 'absolute',
+    width: '50vmin',
+    height: '50vmin',
   }
   
   if (left !== undefined) {
-    style.position = 'absolute'
     style.left = `${left}%`
   }
   if (top !== undefined) {
@@ -32,20 +33,17 @@ const Triangle = forwardRef<HTMLElement, TriangleProps>(function Triangle(
   }
 
   return (
-    <Box
+    <svg
       ref={ref}
-      component="svg"
       role="img"
       className="shape"
       data-testid="shape-triangle"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 144 144"
-      width="144"
-      height="144"
       style={style}
     >
       <path d="M144,144h-144L72.2,0,144,144Z" />
-    </Box>
+    </svg>
   )
 })
 

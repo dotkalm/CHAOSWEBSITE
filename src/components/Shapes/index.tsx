@@ -11,12 +11,12 @@ export default function Shapes() {
   const { layouts } = useShapeLayout()
   const { position } = usePointer()
   
-  const octagonRef = useRef<HTMLElement>(null)
-  const squareRef = useRef<HTMLElement>(null)
-  const triangleRef = useRef<HTMLElement>(null)
+  const octagonRef = useRef<SVGSVGElement>(null)
+  const squareRef = useRef<SVGSVGElement>(null)
+  const triangleRef = useRef<SVGSVGElement>(null)
   
   const shapesRef = useRef<Array<{
-    node: HTMLElement
+    node: SVGSVGElement
     left: number
     top: number
     scale: number
