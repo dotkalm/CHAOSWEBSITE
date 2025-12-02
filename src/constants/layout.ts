@@ -33,7 +33,7 @@ export const SHAPE_LAYOUT_CONFIG = {
    * Two of the three shapes will use these values
    */
   NORMAL_SCALE_MIN: 1.65,
-  NORMAL_SCALE_MAX: 2.0,
+  NORMAL_SCALE_MAX: 2.3,
   
   /**
    * Scale range for the big shape
@@ -41,7 +41,7 @@ export const SHAPE_LAYOUT_CONFIG = {
    * Keeping sizes more similar to match original site aesthetic
    */
   BIG_SCALE_MIN: 2.4,
-  BIG_SCALE_MAX: 3.25,
+  BIG_SCALE_MAX: 3.6,
   
   /**
    * Z-index range for shape layering

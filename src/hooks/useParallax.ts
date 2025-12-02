@@ -22,8 +22,6 @@ export function useParallax(
   shapes: ShapeBaseState[]
 ) {
   const rafIdRef = useRef<number>(0)
-  const isDragActiveRef = useRef(false)
-  const dragStartRef = useRef({ x: 0.5, y: 0.5 })
 
   useEffect(() => {
     if (shapes.length === 0) return
@@ -34,12 +32,9 @@ export function useParallax(
       const invX = invertX ? -1 : 1
       const invY = invertY ? -1 : 1
       
-      const baseDx = isDragActiveRef.current 
-        ? (pointerPosition.x - dragStartRef.current.x) 
-        : (pointerPosition.x - 0.5)
-      const baseDy = isDragActiveRef.current 
-        ? (pointerPosition.y - dragStartRef.current.y) 
-        : (pointerPosition.y - 0.5)
+      // Always calculate from center (0.5, 0.5)
+      const baseDx = pointerPosition.x - 0.5
+      const baseDy = pointerPosition.y - 0.5
       
       const dx = baseDx * moveScale * invX
       const dy = baseDy * moveScale * invY
@@ -74,44 +69,4 @@ export function useParallax(
       }
     }
   }, [pointerPosition, shapes])
-
-  // Handle touch drag baseline
-  useEffect(() => {
-    const handlePointerDown = (e: PointerEvent | TouchEvent) => {
-      // Only treat touch interactions as drags
-      if (
-        ('pointerType' in e && e.pointerType === 'touch') ||
-        ('touches' in e && e.touches.length > 0)
-      ) {
-        isDragActiveRef.current = true
-        dragStartRef.current = { x: pointerPosition.x, y: pointerPosition.y }
-      }
-    }
-
-    const handlePointerUp = (e: PointerEvent | TouchEvent) => {
-      if (
-        ('pointerType' in e && e.pointerType === 'touch') ||
-        e.type === 'touchend' ||
-        e.type === 'touchcancel'
-      ) {
-        isDragActiveRef.current = false
-      }
-    }
-
-    window.addEventListener('pointerdown', handlePointerDown, { passive: true })
-    window.addEventListener('touchstart', handlePointerDown as EventListener, { passive: true })
-    window.addEventListener('pointerup', handlePointerUp, { passive: true })
-    window.addEventListener('pointercancel', handlePointerUp, { passive: true })
-    window.addEventListener('touchend', handlePointerUp as EventListener, { passive: true })
-    window.addEventListener('touchcancel', handlePointerUp as EventListener, { passive: true })
-
-    return () => {
-      window.removeEventListener('pointerdown', handlePointerDown)
-      window.removeEventListener('touchstart', handlePointerDown as EventListener)
-      window.removeEventListener('pointerup', handlePointerUp)
-      window.removeEventListener('pointercancel', handlePointerUp)
-      window.removeEventListener('touchend', handlePointerUp as EventListener)
-      window.removeEventListener('touchcancel', handlePointerUp as EventListener)
-    }
-  }, [pointerPosition])
 }
