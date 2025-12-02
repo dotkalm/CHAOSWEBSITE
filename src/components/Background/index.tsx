@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material';
 import { selectRandomShapeColor } from '@/utils';
@@ -10,7 +10,35 @@ import useIdleFade from '@/hooks/useIdleFade';
 
 export default function Background(){
   const theme = useTheme()
-  const randomColor = useMemo(() => theme.palette.shapes[selectRandomShapeColor()], [theme])
+  const [a11y, setA11y] = useState<boolean>(false);
+
+  useEffect(() => {
+    const storedA11y = localStorage.getItem('a11y');
+    setA11y(storedA11y === 'true');
+
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'a11y') {
+        setA11y(e.newValue === 'true');
+      }
+    };
+
+    const handleA11yChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ value: string }>;
+      setA11y(customEvent.detail.value === 'true');
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('a11yChange', handleA11yChange);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('a11yChange', handleA11yChange);
+    };
+  }, []);
+
+  const randomColor = useMemo(() => a11y
+    ? theme.palette.grey[300]
+    : theme.palette.shapes[selectRandomShapeColor()], [theme, a11y])
+
   const { lastMoveTime } = usePointer()
   const opacity = useIdleFade(lastMoveTime)
   
