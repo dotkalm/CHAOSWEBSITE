@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react/dist/index.d.ts'
+import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '@/theme'
 import Background from './index'
@@ -45,28 +45,28 @@ const meta = {
       control: { type: 'range', min: 0.2, max: 1.5, step: 0.05 },
       description: 'Minimum scale for normal-sized shapes (2 of 3 shapes)',
       table: {
-        defaultValue: { summary: SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MIN },
+        defaultValue: { summary: String(SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MIN) },
       },
     },
     normalScaleMax: {
       control: { type: 'range', min: 0.2, max: 1.5, step: 0.05 },
       description: 'Maximum scale for normal-sized shapes (2 of 3 shapes)',
       table: {
-        defaultValue: { summary: SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MAX },
+        defaultValue: { summary: String(SHAPE_LAYOUT_CONFIG.NORMAL_SCALE_MAX) },
       },
     },
     bigScaleMin: {
       control: { type: 'range', min: 0.2, max: 2.0, step: 0.05 },
       description: 'Minimum scale for the big shape (1 of 3 shapes)',
       table: {
-        defaultValue: { summary: SHAPE_LAYOUT_CONFIG.BIG_SCALE_MIN },
+        defaultValue: { summary: String(SHAPE_LAYOUT_CONFIG.BIG_SCALE_MIN) },
       },
     },
     bigScaleMax: {
       control: { type: 'range', min: 0.2, max: 2.0, step: 0.05 },
       description: 'Maximum scale for the big shape (1 of 3 shapes)',
       table: {
-        defaultValue: { summary: SHAPE_LAYOUT_CONFIG.BIG_SCALE_MAX },
+        defaultValue: { summary: String(SHAPE_LAYOUT_CONFIG.BIG_SCALE_MAX) },
       },
     },
   },
