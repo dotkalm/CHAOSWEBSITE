@@ -6,8 +6,8 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 export const metadata = {
-  title: 'Chaos Agency',
-  description: 'Chaos Agency — website'
+  title: 'CHAOS',
+  description: 'CHAOS'
 };
 
 // JSON-LD describing the site and favicons — description field includes
@@ -15,7 +15,7 @@ export const metadata = {
 const ld = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Chaos Agency',
+  name: 'CHAOS',
   description: 'Favicons and site images: /favicons/*',
   image: '/favicons/favicon.svg',
   potentialAction: [
@@ -23,7 +23,7 @@ const ld = {
   ],
   publisher: {
     '@type': 'Organization',
-    'name': 'Chaos Agency',
+    'name': 'CHAOS',
     'logo': { '@type': 'ImageObject', 'url': '/favicons/favicon.svg' }
   }
 };
@@ -40,9 +40,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180.png" />
-        <link rel="mask-icon" href="/favicon/Chaos_Favicon_HP.svg" color="#008700" />
-        <meta name="theme-color" content="#008700" />
-        <meta name="msapplication-TileColor" content="#008700" />
+        <link rel="mask-icon" href="/favicon/Chaos_Favicon_HP.svg" color="#000000" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       </head>

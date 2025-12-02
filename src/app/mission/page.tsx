@@ -1,7 +1,23 @@
 import { COPY } from '@/constants';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { styles } from '@/styles/styles';
 
 export default function MissionPage(){
-  return <>
-    <h1>Mission</h1>
-  </>;
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 3,
+                ...styles.main
+            }}
+        >
+            <Typography 
+                variant="body1"
+            >
+                {COPY.mission.statement}
+            </Typography>
+        </Box>
+    )
 }

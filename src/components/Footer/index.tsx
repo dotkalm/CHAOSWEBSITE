@@ -8,18 +8,20 @@ import { Labels } from '@/constants';
 
 export default function Footer(){
     const pathname = usePathname();
-    const notRoot = pathname !== '/';
     return (
         <Box 
             component="footer"
             sx={{
                 visibility: {
-                    xs: notRoot ? 'hidden' : 'visible',
+                    xs: 'hidden',
                     md: 'visible',
-                }
+                },
+                cursor: 'pointer',
             }}
         >
-            <Typography variant="caption">{Labels.ACCESSIBILITY}</Typography>
+            <Typography variant="caption">
+                {Labels.ACCESSIBILITY}
+            </Typography>
         </Box>
     );
 }
