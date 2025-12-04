@@ -45,12 +45,12 @@ const theme = createTheme({
     // Type size 1: 13 over 16 (use for body)
     // Type size 2: 10 over 12
     // Type size 3: 8 over 10
-    h1: { fontSize: '32px' },
-    h2: { fontSize: '24px' },
-    h3: { fontSize: '20px' },
-    body1: { fontSize: '0.8125rem', lineHeight: '1rem' },
-    body2: { fontSize: '0.625rem', lineHeight: '0.75rem' },
-    caption: { fontSize: '0.5rem', lineHeight: '0.625rem' }
+    h1: { fontSize: '48px' },
+    h2: { fontSize: '36px' },
+    h3: { fontSize: '30px' },
+    body1: { fontSize: '1.21875rem', lineHeight: '1.5rem' },
+    body2: { fontSize: '0.9375rem', lineHeight: '1.125rem' },
+    caption: { fontSize: '0.75rem', lineHeight: '0.9375rem' }
   }
 });
 
