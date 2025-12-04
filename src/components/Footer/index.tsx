@@ -28,7 +28,7 @@ export default function Footer(){
             sx={{
                 visibility: {
                     xs: 'hidden',
-                    md: 'visible',
+                    sm: 'visible',
                 },
                 cursor: 'pointer',
             }}

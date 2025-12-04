@@ -13,7 +13,6 @@ export default function Subscribe() {
     const [error, setError] = useState<string>();
     const [successMessage, setSuccessMessage] = useState<string>();
     const statusMessage = error ? error : successMessage;
-    const textValue = enteredText && statusMessage ? `${enteredText}  ${statusMessage}` : enteredText || statusMessage || '';
 
     function handleBlur() {
         if (successMessage) setSuccessMessage(undefined);
@@ -56,7 +55,7 @@ export default function Subscribe() {
             sx={{
                 maxWidth: {
                     xs: '100%',
-                    sm: '600px',
+                    sm: '50vw',
                 }
             }}
         >

@@ -53,7 +53,7 @@ export default function Navigation(){
             sx={{
                 display: 'flex',
                 gap: {
-                    xs: 2,
+                    xs: 'inherit',
                     sm: .5,
                 },
                 flexDirection: {
@@ -62,7 +62,15 @@ export default function Navigation(){
                 },
                 zIndex: {
                     sm: 1000
-                }
+                },
+                maxWidth: {
+                    xs: '100%',
+                    sm: '50vw',
+                },
+                justifyContent: {
+                    xs: 'space-between',
+                    sm: 'flex-start',
+                },
             }}
         >
             {
