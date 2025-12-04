@@ -23,16 +23,6 @@ export default function AboutPage(){
             >
                 {COPY.about.bio.as}
             </Typography>
-            <Typography 
-                variant="body1"
-            >
-                {COPY.about.bio.jc}
-            </Typography>
-            <Typography 
-                variant="body1"
-            >
-                {COPY.about.bio.as}
-            </Typography>
         </Box>
     )
 }
