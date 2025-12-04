@@ -41,6 +41,7 @@ const Triangle = forwardRef<SVGSVGElement, TriangleProps>(function Triangle(
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 144 144"
       style={style}
+      suppressHydrationWarning
     >
       <path d="M144,144h-144L72.2,0,144,144Z" />
     </svg>
