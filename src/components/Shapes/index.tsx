@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 import { useShapeLayout, useParallax } from '@/hooks'
 import usePointer from '@/hooks/usePointer'
 import Octagon from './components/Octagon'
@@ -54,7 +55,7 @@ export default function Shapes() {
         },
       ]
     }
-  }, [layouts])
+  }, [layouts, usePathname()])
 
   // Apply parallax effect
   useParallax(position, shapesRef.current)

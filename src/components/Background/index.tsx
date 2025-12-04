@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, use } from 'react';
+import { usePathname } from 'next/navigation';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material';
 import { selectRandomShapeColor } from '@/utils';
@@ -10,6 +11,7 @@ import useIdleFade from '@/hooks/useIdleFade';
 
 export default function Background(){
   const theme = useTheme()
+  const pathname = usePathname()
   const [a11y, setA11y] = useState<boolean>(false);
 
   useEffect(() => {
@@ -37,7 +39,7 @@ export default function Background(){
 
   const randomColor = useMemo(() => a11y
     ? theme.palette.grey[300]
-    : theme.palette.shapes[selectRandomShapeColor()], [theme, a11y])
+    : theme.palette.shapes[selectRandomShapeColor()], [theme, a11y, usePathname()])
 
   const { lastMoveTime } = usePointer()
   const opacity = useIdleFade(lastMoveTime)
@@ -63,7 +65,7 @@ export default function Background(){
         }
       }}
     >
-      <Shapes />
+      <Shapes key={pathname} />
     </Box>
   );
 }
