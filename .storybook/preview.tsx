@@ -1,6 +1,15 @@
-import type { Preview } from '@storybook/nextjs-vite'
+import type { Preview } from '@storybook/nextjs-vite';
+import MuiProvider from '../src/providers/MuiProvider';
+import '../src/styles/globals.css';
 
 const preview: Preview = {
+  decorators: [
+    (Story) => (
+      <MuiProvider>
+        <Story />
+      </MuiProvider>
+    ),
+  ],
   parameters: {
     controls: {
       matchers: {
