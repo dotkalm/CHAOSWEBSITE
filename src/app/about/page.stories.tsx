@@ -3,6 +3,15 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import AboutPage from './page';
 import theme from '@/theme';
 
+type AboutPageStoryArgs = {
+  body1Mobile: string;
+  body2Mobile: string;
+  captionMobile: string;
+  body1Desktop: string;
+  body2Desktop: string;
+  captionDesktop: string;
+};
+
 const meta = {
   title: 'Pages/About',
   component: AboutPage,
@@ -27,24 +36,21 @@ const meta = {
         typography: {
           ...theme.typography,
           body1: {
-            fontSize: context.args.body1Mobile || '1.21875rem',
-            lineHeight: '1.5rem',
-            [theme.breakpoints.up('md')]: {
-              fontSize: context.args.body1Desktop || '1.21875rem',
+            fontSize: context.args.body1Mobile || '1rem',
+            '@media (min-width: 801px)': {
+              fontSize: context.args.body1Desktop || '1.28vw',
             },
           },
           body2: {
-            fontSize: context.args.body2Mobile || '0.9375rem',
-            lineHeight: '1.125rem',
-            [theme.breakpoints.up('md')]: {
-              fontSize: context.args.body2Desktop || '0.9375rem',
+            fontSize: context.args.body2Mobile || '0.769rem',
+            '@media (min-width: 801px)': {
+              fontSize: context.args.body2Desktop || '0.984vw',
             },
           },
           caption: {
-            fontSize: context.args.captionMobile || '0.75rem',
-            lineHeight: '0.9375rem',
-            [theme.breakpoints.up('md')]: {
-              fontSize: context.args.captionDesktop || '0.75rem',
+            fontSize: context.args.captionMobile || '0.616rem',
+            '@media (min-width: 801px)': {
+              fontSize: context.args.captionDesktop || '0.788vw',
             },
           },
         },
@@ -57,18 +63,18 @@ const meta = {
       );
     },
   ],
-} satisfies Meta<typeof AboutPage>;
+} satisfies Meta<AboutPageStoryArgs>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<AboutPageStoryArgs>;
 
 export const Default: Story = {
   args: {
-    body1Mobile: '1.21875rem',
-    body1Desktop: '1.21875rem',
-    body2Mobile: '0.9375rem',
-    body2Desktop: '0.9375rem',
-    captionMobile: '0.75rem',
-    captionDesktop: '0.75rem',
+    body1Mobile: '1rem',
+    body1Desktop: '1.28vw',
+    body2Mobile: '0.769rem',
+    body2Desktop: '0.984vw',
+    captionMobile: '0.616rem',
+    captionDesktop: '0.788vw',
   },
 };

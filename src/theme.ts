@@ -41,22 +41,42 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: ['NewRail', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
-    h1: { fontSize: '48px' },
-    h2: { fontSize: '36px' },
-    h3: { fontSize: '30px' },
-    body1: { 
-      fontSize: '1.21875rem', 
-      lineHeight: '1.5rem' 
+    body1: {
+      fontSize: '1rem', 
+      lineHeight: '1.5rem',
+      '@media (min-width: 801px)': {
+        fontSize: '1.28vw',
+      },
     },
-    body2: { 
-      fontSize: '0.9375rem', 
-      lineHeight: '1.125rem' 
+    body2: {
+      fontSize: '0.984vw', 
+      lineHeight: '1.125rem',
+      '@media (min-width: 801px)': {
+        fontSize: '0.769rem', 
+      },
     },
-    caption: { 
-      fontSize: '0.75rem', 
-      lineHeight: '0.9375rem' 
+    caption: {
+      fontSize: '0.788vw', 
+      lineHeight: '0.9375rem',
+      '@media (min-width: 801px)': {
+        fontSize: '0.616rem', 
+      },
     },
   }
 });
 
 export default theme;
+/*
+    body1: {
+      fontSize: '1.21875rem', 
+    },
+    body2: {
+      fontSize: '0.9375rem', 
+    },
+    caption: {
+      fontSize: '0.75rem', 
+    },
+body1: 0.8125rem → 16px (line-height: 19.7px) -> 1.28vw
+body2: 0.625rem → 12.3px (line-height: 14.8px) -> 0.984vw
+caption: 0.5rem → 9.85px (line-height: 12.3px) -> 0.788vw
+*/
