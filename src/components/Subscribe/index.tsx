@@ -80,6 +80,8 @@ export default function Subscribe() {
                     borderColor: 'text.primary',
                     maxWidth: '100%',
                     height: '3.5rem',
+                    padding: '0 1rem',
+                    overflow: 'hidden', // Add this to prevent overflow
                 }}
             >
                 <Box
@@ -93,7 +95,7 @@ export default function Subscribe() {
                     sx={{
                         border: 'none',
                         flex: 1,
-                        padding: '0 1rem',
+                        minWidth: 0, // Add this to allow input to shrink below its content width
                         ...theme.typography.body1,
                         fontFamily: 'inherit',
                         backgroundColor: 'transparent',
@@ -111,9 +113,10 @@ export default function Subscribe() {
                     <Typography
                         variant='body1'
                         sx={{
+                            alignItems: 'center',
                             color: '#000',
                             display: 'flex',
-                            alignItems: 'center',
+                            paddingRight: '1rem',
                         }}
                     >
                         {statusMessage}
@@ -125,13 +128,13 @@ export default function Subscribe() {
                     sx={{
                         border: 'none',
                         backgroundColor: 'transparent',
-                        padding: '0 1rem',
                         fontFamily: 'inherit',
-                        fontSize: '1rem',
                         whiteSpace: 'nowrap',
+                        padding: '0',
                         '&:hover': {
                             cursor: 'pointer',
-                        }
+                        },
+                        ...theme.typography.body1,
                     }}
                 >
                     {isSubmitting ? (
@@ -150,7 +153,6 @@ export default function Subscribe() {
                         <Typography
                             variant='body1'
                             sx={{
-                                paddingLeft: '.5rem',
                                 color: '#000',
                             }}
                         >
@@ -164,7 +166,6 @@ export default function Subscribe() {
                 variant='body2'
                 sx={{
                     marginTop: 2,
-                    fontSize: '0.75rem',
                 }}
             >
                 {COPY.newsletter.caption}

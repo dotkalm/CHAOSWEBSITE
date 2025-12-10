@@ -81,6 +81,7 @@ export default function Navigation(){
 
                     return (
                             <Typography
+                                key={route}
                                 variant="body1"
                                 sx={{
                                     color: {
