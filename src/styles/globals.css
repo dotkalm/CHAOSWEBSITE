@@ -1,7 +1,4 @@
 
-/* Font faces - using fonts placed in /public/font. If filenames differ,
-   update the src URLs to match your files. */
-/* NewRailAlphabet font files provided in /public/font - used for headings */
 @font-face {
   font-family: 'NewRail';
   src: url('/font/newrailalphabet-bold-webfont.woff2') format('woff2'),
@@ -61,12 +58,6 @@ p {
   -ms-hyphens: auto;
 }
 
-/* small util classes matching PDF type scale */
-.type-1 { font-size: 13px; line-height: 16px; }
-.type-2 { font-size: 10px; line-height: 12px; }
-.type-3 { font-size: 8px; line-height: 10px; }
-
-
 .layout-grid {
   display: grid;
   min-height: 100vh;
@@ -86,8 +77,8 @@ p {
 @media (max-width: 599px) {
   .layout-grid {
     min-height: 100vh;
-    grid-template-columns: 1fr; /* Single column */
-    grid-template-rows: auto auto 1fr auto; /* header, nav, main, footer */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
     grid-template-areas:
       "header"
       "nav"
@@ -111,7 +102,7 @@ p {
 
 .layout-grid > main {
   grid-area: main;
-  min-height: 0; /* Important for grid overflow */
+  min-height: 0;
 }
 
 .layout-grid > footer {
