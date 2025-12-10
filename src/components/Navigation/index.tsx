@@ -54,7 +54,7 @@ export default function Navigation(){
                 display: 'flex',
                 gap: {
                     xs: 'inherit',
-                    sm: .5,
+                    sm: 0,
                 },
                 flexDirection: {
                     xs: 'row',
@@ -80,11 +80,6 @@ export default function Navigation(){
                     const desktopColor = isActive && a11y ? theme.palette.shapes[NavigationColors[route]] : (isActive ? theme.palette.grey[500] : 'inherit');
 
                     return (
-                        <Link
-                            href={route}
-                            key={NavigationLabels[route]}
-                            style={{ textDecoration: 'none' }}
-                        >
                             <Typography
                                 variant="body1"
                                 sx={{
@@ -101,17 +96,17 @@ export default function Navigation(){
                                     }
                                 }}
                             >
-                                {NavigationLabels[route]}
+                                <Link
+                                    href={route}
+                                    key={NavigationLabels[route]}
+                                    style={{ textDecoration: 'none' }}
+                                >
+                                    {NavigationLabels[route]}
+                                </Link>
                             </Typography>
-                        </Link>
                     );
                 })
             }
-            <a
-                href={`mailto:${COPY.contact.email}`}
-                onClick={handleContactClick}
-                style={{ textDecoration: 'none' }}
-            >
                 <Typography
                     variant="body1"
                     sx={{
@@ -126,9 +121,14 @@ export default function Navigation(){
                         }
                     }}
                 >
-                    {COPY.contact.label}
+                    <a
+                        href={`mailto:${COPY.contact.email}`}
+                        onClick={handleContactClick}
+                        style={{ textDecoration: 'none' }}
+                    >
+                        {COPY.contact.label}
+                    </a>
                 </Typography>
-            </a>
         </Box>
     );
 }

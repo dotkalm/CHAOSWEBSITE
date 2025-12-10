@@ -43,21 +43,21 @@ const theme = createTheme({
     fontFamily: ['NewRail', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
     body1: {
       fontSize: '1rem', 
-      lineHeight: '1.5rem',
+      lineHeight: '1.2em',
       '@media (min-width: 801px)': {
         fontSize: '1.28vw',
       },
     },
     body2: {
       fontSize: '0.984vw', 
-      lineHeight: '1.125rem',
+      lineHeight: '1.2em',
       '@media (min-width: 801px)': {
         fontSize: '0.769rem', 
       },
     },
     caption: {
       fontSize: '0.788vw', 
-      lineHeight: '0.9375rem',
+      lineHeight: '1.2em',
       '@media (min-width: 801px)': {
         fontSize: '0.616rem', 
       },

@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useTheme } from '@mui/material/styles';
 import { subscribeToNewsletter, emailRegex } from '@/utils'; 
 import { COPY } from '@/constants';
 
 export default function Subscribe() {
+    const theme = useTheme();
     const { newsletter: { messages: mailingList, labels } } = COPY;
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [enteredText, setEnteredText] = useState<string>("");
@@ -92,11 +94,12 @@ export default function Subscribe() {
                         border: 'none',
                         flex: 1,
                         padding: '0 1rem',
-                        fontSize: '1rem',
+                        ...theme.typography.body1,
                         fontFamily: 'inherit',
                         backgroundColor: 'transparent',
                         color: 'inherit',
                         '&::placeholder': {
+                            ...theme.typography.body1,
                             color: 'rgba(0, 0, 0, 0.4)',
                         },
                         '&:focus': {

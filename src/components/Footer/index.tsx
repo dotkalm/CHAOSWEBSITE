@@ -33,7 +33,7 @@ export default function Footer(){
                 cursor: 'pointer',
             }}
         >
-            <Typography variant="caption">
+            <Typography variant="body2">
                 {Labels.ACCESSIBILITY}
             </Typography>
         </Box>
