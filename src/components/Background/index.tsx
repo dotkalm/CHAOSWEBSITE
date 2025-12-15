@@ -57,10 +57,7 @@ export default function Background(){
         opacity,
         transition: 'none',
         '& svg path': {
-          fill: {
-            xs: theme.palette.grey[300],
-            sm: randomColor
-          },
+          fill: randomColor,
           strokeWidth: 0
         }
       }}

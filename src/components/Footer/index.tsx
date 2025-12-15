@@ -26,10 +26,6 @@ export default function Footer(){
             component="footer"
             onClick={handleAccessibilityClick}
             sx={{
-                visibility: {
-                    xs: 'hidden',
-                    sm: 'visible',
-                },
                 cursor: 'pointer',
             }}
         >

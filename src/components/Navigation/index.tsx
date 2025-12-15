@@ -14,7 +14,7 @@ import {
     NavigationColors,
 } from '@/constants';
 
-export default function Navigation(){
+export default function Navigation() {
     const pathname = usePathname();
     const theme = useTheme();
     const [a11y, setA11y] = useState<boolean>(false);
@@ -35,10 +35,10 @@ export default function Navigation(){
     const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
         const email = COPY.contact.email;
-        
+
         // Try to open mailto
         window.location.href = `mailto:${email}`;
-        
+
         // Fallback: copy to clipboard silently after a brief delay
         setTimeout(() => {
             navigator.clipboard.writeText(email).catch(() => {
@@ -76,60 +76,52 @@ export default function Navigation(){
             {
                 NavigationTuple.map((route) => {
                     const isActive = pathname === route;
-                    const activeColor = isActive ? theme.palette.shapes[NavigationColors[route]] : theme.palette.primary.main;
+                    const hoverColor = a11y ? theme.palette.shapes[NavigationColors[route]] : theme.palette.grey[500];
                     const desktopColor = isActive && a11y ? theme.palette.shapes[NavigationColors[route]] : (isActive ? theme.palette.grey[500] : 'inherit');
 
                     return (
-                            <Typography
-                                key={route}
-                                variant="body1"
-                                sx={{
-                                    color: {
-                                        xs: activeColor,
-                                        sm: desktopColor,
-                                    },
-                                    cursor: 'pointer',
-                                    '&:hover': {
-                                        color: {
-                                            xs: activeColor,
-                                            sm: `${theme.palette.grey[500]} !important`,
-                                        }
-                                    }
-                                }}
+                        <Typography
+                            key={route}
+                            variant="body1"
+                            sx={{
+                                color: desktopColor,
+                                cursor: 'pointer',
+                                '&:hover': {
+                                    color: hoverColor,
+                                }
+                            }}
+                        >
+                            <Link
+                                href={route}
+                                key={NavigationLabels[route]}
+                                style={{ textDecoration: 'none' }}
                             >
-                                <Link
-                                    href={route}
-                                    key={NavigationLabels[route]}
-                                    style={{ textDecoration: 'none' }}
-                                >
-                                    {NavigationLabels[route]}
-                                </Link>
-                            </Typography>
+                                {NavigationLabels[route]}
+                            </Link>
+                        </Typography>
                     );
                 })
             }
-                <Typography
-                    variant="body1"
-                    sx={{
-                        color: {
-                            xs: theme.palette.primary.main,
-                        },
-                        cursor: 'pointer',
-                        '&:hover': {
-                            color: {
-                                xs: `${theme.palette.grey[500]} !important`,
-                            }
-                        }
-                    }}
+            <Typography
+                variant="body1"
+                sx={{
+                    color: {
+                        xs: theme.palette.primary.main,
+                    },
+                    cursor: 'pointer',
+                    '&:hover': {
+                        color: a11y ? theme.palette.shapes.orange : theme.palette.grey[500],
+                    }
+                }}
+            >
+                <a
+                    href={`mailto:${COPY.contact.email}`}
+                    onClick={handleContactClick}
+                    style={{ textDecoration: 'none' }}
                 >
-                    <a
-                        href={`mailto:${COPY.contact.email}`}
-                        onClick={handleContactClick}
-                        style={{ textDecoration: 'none' }}
-                    >
-                        {COPY.contact.label}
-                    </a>
-                </Typography>
+                    {COPY.contact.label}
+                </a>
+            </Typography>
         </Box>
     );
 }
