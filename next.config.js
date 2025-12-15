@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production'
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isProd ? '/CHAOSWEBSITE' : '')
+// Only use basePath for GitHub Pages, not for Vercel
+const isGitHubPages = process.env.GITHUB_ACTIONS === 'true'
+const basePath = isGitHubPages ? '/CHAOSWEBSITE' : ''
 
 const nextConfig = {
   output: 'export',
