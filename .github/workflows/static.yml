@@ -37,7 +37,7 @@ jobs:
           node-version: '20'
           cache: 'yarn'
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
       - name: Build Next.js
         run: yarn build
       - name: Setup Pages
