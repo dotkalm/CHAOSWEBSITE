@@ -52,17 +52,17 @@ const theme = createTheme({
       },
     },
     body2: {
-      fontSize: '0.984vw', 
-      lineHeight: '1.2em',
+      fontSize: '0.769rem', 
+      lineHeight: '1.1em',
       '@media (min-width: 801px)': {
-        fontSize: '0.769rem', 
+        fontSize: '0.984vw', 
       },
     },
     caption: {
-      fontSize: '0.788vw', 
-      lineHeight: '1.2em',
+      fontSize: '0.616rem',
+      lineHeight: '1em',
       '@media (min-width: 801px)': {
-        fontSize: '0.616rem', 
+        fontSize: '0.788vw',
       },
     },
   }
