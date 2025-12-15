@@ -2,6 +2,7 @@
 /.next
 /out
 node_modules
+package-lock.json
 .env.local
 .env.*.local
 .DS_Store
