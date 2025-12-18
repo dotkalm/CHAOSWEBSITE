@@ -9,12 +9,12 @@ import Square from './components/Square'
 import Triangle from './components/Triangle'
 
 export default function Shapes() {
-  const { layouts } = useShapeLayout()
-  const { position } = usePointer()
-  
-  const octagonRef = useRef<SVGSVGElement>(null)
-  const squareRef = useRef<SVGSVGElement>(null)
-  const triangleRef = useRef<SVGSVGElement>(null)
+  const { layouts } = useShapeLayout();
+  const { position } = usePointer();
+  ;
+  const octagonRef = useRef<SVGSVGElement>(null);
+  const squareRef = useRef<SVGSVGElement>(null);
+  const triangleRef = useRef<SVGSVGElement>(null);
   
   const shapesRef = useRef<Array<{
     node: SVGSVGElement
@@ -23,7 +23,7 @@ export default function Shapes() {
     scale: number
     rotate: number
     z: number
-  }>>([])
+  }>>([]);
 
   // Build shapes array for parallax when refs are ready (only once)
   useEffect(() => {
@@ -55,10 +55,10 @@ export default function Shapes() {
         },
       ]
     }
-  }, [layouts, usePathname()])
+  }, [layouts, usePathname()]);
 
   // Apply parallax effect
-  useParallax(position, shapesRef.current)
+  useParallax(position, shapesRef.current);
 
   return (
     <>
@@ -87,5 +87,5 @@ export default function Shapes() {
         zIndex={layouts[2].zIndex}
       />
     </>
-  )
+  );
 }
