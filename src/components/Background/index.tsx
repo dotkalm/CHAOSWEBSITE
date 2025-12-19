@@ -23,7 +23,6 @@ export default function Background(){
     return color || theme.palette.shapes[SHAPE_COLOR_VALUES[index]];
   });
 
-  console.log(randomColor, color)
 
   useEffect(() => {
     const getColorFromSeed = (a11yState: boolean) => {
