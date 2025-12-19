@@ -12,14 +12,8 @@ import { SHAPE_COLOR_VALUES } from '@/constants'
 export default function Background(){
   const theme = useTheme()
   const pathname = usePathname()
-  const color = typeof window !== 'undefined' ? (window as any).__CHAOS_SEED__ : (() => {
-    const index = Math.floor(Date.now() / 100) % SHAPE_COLOR_VALUES.length;
-    return theme.palette.shapes[SHAPE_COLOR_VALUES[index]];
-  })() as string;
-  
   // Calculate initial color to prevent flash
   const [randomColor, setRandomColor] = useState<string>();
-
 
   useEffect(() => {
     const getColorFromSeed = (a11yState: boolean) => {

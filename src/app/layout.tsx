@@ -46,23 +46,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            // Generate color before React hydrates to prevent flash
-            const randomColor = (() => {
-              const index = Math.floor(Date.now() / 100) % ${SHAPE_COLOR_VALUES.length};
-              const color = [
-                '#0000ff',
-                '#008700',
-                '#ffa600',
-                '#db3adf',
-                '#d30000',
-              ][index];
-              return color;
-            })();
-            window.__CHAOS_SEED__ = randomColor; 
-          `
-        }} />
       </head>
       <body>
         <MuiProvider>
