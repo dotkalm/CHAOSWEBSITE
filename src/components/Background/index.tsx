@@ -1,32 +1,50 @@
 "use client";
 
-import { useMemo, useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material';
-import { selectRandomShapeColor } from '@/utils';
 import Shapes from '@/components/Shapes';
 import usePointer from '@/hooks/usePointer';
 import useIdleFade from '@/hooks/useIdleFade';
+import useSeededRandom from '@/hooks/useSeededRandom';
+import { SHAPE_COLOR_VALUES } from '@/constants'
 
 export default function Background(){
   const theme = useTheme()
   const pathname = usePathname()
-  const [a11y, setA11y] = useState<boolean>(false);
+  const { seed, getIndex } = useSeededRandom([pathname]);
+  
+  // Calculate initial color to prevent flash
+  const [randomColor, setRandomColor] = useState<string>(() => {
+    const shapeColors = Object.keys(theme.palette.shapes);
+    const index = getIndex(shapeColors.length);
+    return theme.palette.shapes[SHAPE_COLOR_VALUES[index]];
+  });
 
   useEffect(() => {
+    const getColorFromSeed = (a11yState: boolean) => {
+      if (a11yState) {
+        return theme.palette.grey[300];
+      } else {
+        const shapeColors = Object.keys(theme.palette.shapes);
+        const index = getIndex(shapeColors.length);
+        return theme.palette.shapes[SHAPE_COLOR_VALUES[index]];
+      }
+    };
+    
     const storedA11y = localStorage.getItem('a11y');
-    setA11y(storedA11y === 'true');
+    setRandomColor(getColorFromSeed(storedA11y === 'true'));
 
     const handleStorageChange = (e: StorageEvent) => {
       if (e.key === 'a11y') {
-        setA11y(e.newValue === 'true');
+        setRandomColor(getColorFromSeed(e.newValue === 'true'));
       }
     };
 
     const handleA11yChange = (e: Event) => {
       const customEvent = e as CustomEvent<{ value: string }>;
-      setA11y(customEvent.detail.value === 'true');
+      setRandomColor(getColorFromSeed(customEvent.detail.value === 'true'));
     };
 
     window.addEventListener('storage', handleStorageChange);
@@ -35,11 +53,7 @@ export default function Background(){
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('a11yChange', handleA11yChange);
     };
-  }, []);
-
-  const randomColor = useMemo(() => a11y
-    ? theme.palette.grey[300]
-    : theme.palette.shapes[selectRandomShapeColor()], [theme, a11y, usePathname()])
+  }, [pathname, seed, theme, getIndex]);
 
   const { lastMoveTime } = usePointer()
   const opacity = useIdleFade(lastMoveTime)
@@ -62,7 +76,7 @@ export default function Background(){
         }
       }}
     >
-      <Shapes key={pathname} />
+      <Shapes key={`${pathname}-${seed}`} />
     </Box>
   );
 }
