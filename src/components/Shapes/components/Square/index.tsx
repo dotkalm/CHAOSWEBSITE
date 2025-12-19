@@ -1,15 +1,16 @@
 import { forwardRef } from 'react'
 
 export interface SquareProps {
-  left?: number
-  top?: number
-  scale?: number
-  rotate?: number
-  zIndex?: number
+  left?: number;
+  top?: number;
+  scale?: number;
+  rotate?: number;
+  zIndex?: number;
+  randomColor: string;
 }
 
 const Square = forwardRef<SVGSVGElement, SquareProps>(function Square(
-  { left, top, scale = 1, rotate = 0, zIndex = 10 },
+  { left, top, scale = 1, rotate = 0, zIndex = 10, randomColor },
   ref
 ) {
   const style: React.CSSProperties = {
@@ -41,9 +42,8 @@ const Square = forwardRef<SVGSVGElement, SquareProps>(function Square(
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 144 144"
       style={style}
-      suppressHydrationWarning
     >
-      <path d="M0,0h144v144h-144V0Z" />
+      <path d="M0,0h144v144h-144V0Z" fill={randomColor}/>
     </svg>
   )
 })

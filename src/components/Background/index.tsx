@@ -49,11 +49,13 @@ export default function Background(){
 
   const { lastMoveTime } = usePointer()
   const opacity = useIdleFade(lastMoveTime)
-  
+
   return !randomColor ? null : (
     <Box
       className=".background"
       sx={{
+        WebkitTransform: 'none',
+        transform: 'none',
         position: 'fixed',
         top: 0,
         left: 0,
@@ -62,13 +64,19 @@ export default function Background(){
         zIndex: -9999,
         opacity,
         transition: 'none',
+        WebkitBackfaceVisibility: 'hidden',
         '& svg path': {
-          fill: randomColor,
-          strokeWidth: 0
+          strokeWidth: 0,
+          WebkitBackfaceVisibility: 'hidden',
+          transform: 'translateZ(0)',
+          WebkitPerspective: 1000,
+          perspective: 1000,
         }
       }}
     >
-      <Shapes />
+      <Shapes 
+        randomColor={randomColor}
+      />
     </Box>
   );
 }

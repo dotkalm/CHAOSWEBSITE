@@ -8,7 +8,7 @@ import Octagon from './components/Octagon'
 import Square from './components/Square'
 import Triangle from './components/Triangle'
 
-export default function Shapes() {
+export default function Shapes({ randomColor }: { randomColor: string }) {
   const { layouts } = useShapeLayout();
   const { position } = usePointer();
   ;
@@ -70,6 +70,7 @@ export default function Shapes() {
         scale={layouts[0].scale}
         rotate={layouts[0].rotation}
         zIndex={layouts[0].zIndex}
+        randomColor={randomColor}
       />
       <Square 
         ref={squareRef}
@@ -78,6 +79,7 @@ export default function Shapes() {
         scale={layouts[1].scale}
         rotate={layouts[1].rotation}
         zIndex={layouts[1].zIndex}
+        randomColor={randomColor}
       />
       <Triangle 
         ref={triangleRef}
@@ -86,6 +88,7 @@ export default function Shapes() {
         scale={layouts[2].scale}
         rotate={layouts[2].rotation}
         zIndex={layouts[2].zIndex}
+        randomColor={randomColor}
       />
     </>
   );

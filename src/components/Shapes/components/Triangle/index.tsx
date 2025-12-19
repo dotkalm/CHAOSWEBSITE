@@ -1,15 +1,16 @@
 import { forwardRef } from 'react'
 
 export interface TriangleProps {
-  left?: number
-  top?: number
-  scale?: number
-  rotate?: number
-  zIndex?: number
+  left?: number;
+  top?: number;
+  scale?: number;
+  rotate?: number;
+  zIndex?: number;
+  randomColor: string;
 }
 
 const Triangle = forwardRef<SVGSVGElement, TriangleProps>(function Triangle(
-  { left, top, scale = 1, rotate = 0, zIndex = 10 },
+  { left, top, scale = 1, rotate = 0, zIndex = 10, randomColor},
   ref
 ) {
   const style: React.CSSProperties = {
@@ -41,9 +42,8 @@ const Triangle = forwardRef<SVGSVGElement, TriangleProps>(function Triangle(
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 144 144"
       style={style}
-      suppressHydrationWarning
     >
-      <path d="M144,144h-144L72.2,0,144,144Z" />
+      <path d="M144,144h-144L72.2,0,144,144Z" fill={randomColor}/>
     </svg>
   )
 })

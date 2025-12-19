@@ -1,15 +1,16 @@
 import { forwardRef } from 'react'
 
 export interface OctagonProps {
-  left?: number
-  top?: number
-  scale?: number
-  rotate?: number
-  zIndex?: number
+  left?: number;
+  top?: number;
+  scale?: number;
+  rotate?: number;
+  zIndex?: number;
+  randomColor: string;
 }
 
 const Octagon = forwardRef<SVGSVGElement, OctagonProps>(function Octagon(
-  { left, top, scale = 1, rotate = 0, zIndex = 10 },
+  { left, top, scale = 1, rotate = 0, zIndex = 10, randomColor },
   ref
 ) {
   const style: React.CSSProperties = {
@@ -41,9 +42,8 @@ const Octagon = forwardRef<SVGSVGElement, OctagonProps>(function Octagon(
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 144 144"
       style={style}
-      suppressHydrationWarning
     >
-      <path d="M0,101.6v-59.3L41.9,0h59.7l42.4,42.4v59.3l-42.4,42.4h-59.7L0,101.6Z" />
+      <path d="M0,101.6v-59.3L41.9,0h59.7l42.4,42.4v59.3l-42.4,42.4h-59.7L0,101.6Z" fill={randomColor}/>
     </svg>
   )
 })
