@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import { themeColors } from '@/constants'
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -24,13 +25,7 @@ declare module '@mui/material/styles' {
 
 const theme = createTheme({
   palette: {
-    shapes: {
-      green: '#008700',
-      purple: '#db3adf',
-      red: '#d30000',
-      orange: '#ffa600',
-      blue: '#0000ff'
-    },
+    shapes: themeColors, 
     primary: { main: '#000' }, 
     secondary: { main: '#000' },
     background: {
@@ -69,17 +64,3 @@ const theme = createTheme({
 });
 
 export default theme;
-/*
-    body1: {
-      fontSize: '1.21875rem', 
-    },
-    body2: {
-      fontSize: '0.9375rem', 
-    },
-    caption: {
-      fontSize: '0.75rem', 
-    },
-body1: 0.8125rem → 16px (line-height: 19.7px) -> 1.28vw
-body2: 0.625rem → 12.3px (line-height: 14.8px) -> 0.984vw
-caption: 0.5rem → 9.85px (line-height: 12.3px) -> 0.788vw
-*/

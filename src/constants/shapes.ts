@@ -13,3 +13,11 @@ export const SHAPE_COLOR_VALUES = [
   SHAPE_COLORS.PURPLE,
   SHAPE_COLORS.RED,
 ] as const
+
+export const themeColors = {
+  blue: '#0000ff',
+  green: '#008700',
+  orange: '#ffa600',
+  purple: '#db3adf',
+  red: '#d30000',
+};

@@ -4,6 +4,8 @@ import Background from '@/components/Background';
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { SHAPE_COLOR_VALUES, themeColors } from '@/constants'
+import { getSeededIndex } from '@/utils';
 
 export const metadata = {
   title: 'CHAOS',
@@ -47,8 +49,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
         <script dangerouslySetInnerHTML={{
           __html: `
-            // Generate seed before React hydrates to prevent flash
-            window.__CHAOS_SEED__ = Date.now();
+            // Generate color before React hydrates to prevent flash
+            window.__CHAOS_SEED__ = '${themeColors[SHAPE_COLOR_VALUES[getSeededIndex(Date.now(), SHAPE_COLOR_VALUES.length)]]}';
           `
         }} />
       </head>

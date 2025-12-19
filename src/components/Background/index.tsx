@@ -17,8 +17,7 @@ export default function Background(){
   
   // Calculate initial color to prevent flash
   const [randomColor, setRandomColor] = useState<string>(() => {
-    const shapeColors = Object.keys(theme.palette.shapes);
-    const index = getIndex(shapeColors.length);
+    const index = getIndex(SHAPE_COLOR_VALUES.length);
     return theme.palette.shapes[SHAPE_COLOR_VALUES[index]];
   });
 
