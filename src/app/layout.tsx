@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               console.log(Date.now());
               const index = Math.floor(Date.now() / 100) % ${SHAPE_COLOR_VALUES.length};
               console.log(index);
-              const color = '${themeColors[SHAPE_COLOR_VALUES[getSeededIndex(Date.now(), SHAPE_COLOR_VALUES.length)]]}';
+              const color = '${themeColors[SHAPE_COLOR_VALUES[Math.floor(Date.now() / 100) % SHAPE_COLOR_VALUES.length]]}';
               console.log(color);
               return color;
             })();
