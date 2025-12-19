@@ -77,7 +77,7 @@ export default function Background(){
         }
       }}
     >
-      <Shapes key={`${pathname}-${Date.now()}`} />
+      <Shapes />
     </Box>
   );
 }
