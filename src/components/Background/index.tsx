@@ -7,17 +7,19 @@ import { useTheme } from '@mui/material';
 import Shapes from '@/components/Shapes';
 import usePointer from '@/hooks/usePointer';
 import useIdleFade from '@/hooks/useIdleFade';
-import useSeededRandom from '@/hooks/useSeededRandom';
 import { SHAPE_COLOR_VALUES } from '@/constants'
 
 export default function Background(){
   const theme = useTheme()
   const pathname = usePathname()
-  const { seed, getIndex } = useSeededRandom([pathname]);
+  const color = typeof window !== 'undefined' ? (window as any).__CHAOS_SEED__ : (() => {
+    const index = Math.floor(Date.now() / 100) % SHAPE_COLOR_VALUES.length;
+    return theme.palette.shapes[SHAPE_COLOR_VALUES[index]];
+  })();
   
   // Calculate initial color to prevent flash
   const [randomColor, setRandomColor] = useState<string>(() => {
-    const index = getIndex(SHAPE_COLOR_VALUES.length);
+    const index = Math.floor(Date.now() / 100) % SHAPE_COLOR_VALUES.length;
     return theme.palette.shapes[SHAPE_COLOR_VALUES[index]];
   });
 
@@ -26,8 +28,7 @@ export default function Background(){
       if (a11yState) {
         return theme.palette.grey[300];
       } else {
-        const shapeColors = Object.keys(theme.palette.shapes);
-        const index = getIndex(shapeColors.length);
+        const index = Math.floor(Date.now() / 100) % SHAPE_COLOR_VALUES.length;
         return theme.palette.shapes[SHAPE_COLOR_VALUES[index]];
       }
     };
@@ -70,12 +71,12 @@ export default function Background(){
         opacity,
         transition: 'none',
         '& svg path': {
-          fill: randomColor,
+          fill: color || randomColor,
           strokeWidth: 0
         }
       }}
     >
-      <Shapes key={`${pathname}-${seed}`} />
+      <Shapes key={`${pathname}-${Date.now()}`} />
     </Box>
   );
 }
