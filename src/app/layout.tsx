@@ -60,7 +60,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               ][index];
               return color;
             })();
-            console.log(randomColor);
             window.__CHAOS_SEED__ = randomColor; 
           `
         }} />

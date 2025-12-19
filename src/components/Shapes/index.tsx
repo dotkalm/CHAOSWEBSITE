@@ -15,6 +15,7 @@ export default function Shapes() {
   const octagonRef = useRef<SVGSVGElement>(null);
   const squareRef = useRef<SVGSVGElement>(null);
   const triangleRef = useRef<SVGSVGElement>(null);
+  const pathname = usePathname();
   
   const shapesRef = useRef<Array<{
     node: SVGSVGElement
@@ -27,7 +28,7 @@ export default function Shapes() {
 
   // Build shapes array for parallax when refs are ready (only once)
   useEffect(() => {
-    if (octagonRef.current && squareRef.current && triangleRef.current && shapesRef.current.length === 0) {
+    if (octagonRef.current && squareRef.current && triangleRef.current && shapesRef.current) {
       shapesRef.current = [
         {
           node: octagonRef.current,
@@ -55,10 +56,12 @@ export default function Shapes() {
         },
       ]
     }
-  }, [layouts, usePathname()]);
+  }, [layouts, pathname]);
 
   // Apply parallax effect
   useParallax(position, shapesRef.current);
+
+  const layoutKey = `${layouts[0].left}-${layouts[0].top}-${layouts[1].left}`;
 
   return (
     <>

@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react'
+import { useMemo } from 'react'
+import { usePathname } from 'next/navigation'
 import { 
   randomRotation, 
   randomNormalScale, 
@@ -32,7 +33,9 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 export function useShapeLayout() {
-  const [layouts] = useState<ShapeLayout[]>(() => {
+  const pathname = usePathname()
+  
+  const layouts = useMemo<ShapeLayout[]>(() => {
     const { 
       GRID_POSITIONS, 
       JITTER_X, 
@@ -69,7 +72,7 @@ export function useShapeLayout() {
         zIndex: randomZIndex()
       }
     })
-  })
+  }, [pathname])
 
   return { layouts }
 }
