@@ -18,10 +18,7 @@ export default function Background(){
   })() as string;
   
   // Calculate initial color to prevent flash
-  const [randomColor, setRandomColor] = useState<string>(() => {
-    const index = Math.floor(Date.now() / 100) % SHAPE_COLOR_VALUES.length;
-    return color || theme.palette.shapes[SHAPE_COLOR_VALUES[index]];
-  });
+  const [randomColor, setRandomColor] = useState<string>();
 
 
   useEffect(() => {
@@ -59,7 +56,7 @@ export default function Background(){
   const { lastMoveTime } = usePointer()
   const opacity = useIdleFade(lastMoveTime)
   
-  return (
+  return !randomColor ? null : (
     <Box
       className=".background"
       sx={{
