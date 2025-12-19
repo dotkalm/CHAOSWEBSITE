@@ -58,7 +58,7 @@ export default function Background(){
         top: 0,
         left: 0,
         width: '100vw',
-        height: '100vh',
+        height: '100%',
         zIndex: -9999,
         opacity,
         transition: 'none',

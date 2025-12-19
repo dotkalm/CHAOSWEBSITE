@@ -61,8 +61,6 @@ export default function Shapes() {
   // Apply parallax effect
   useParallax(position, shapesRef.current);
 
-  const layoutKey = `${layouts[0].left}-${layouts[0].top}-${layouts[1].left}`;
-
   return (
     <>
       <Octagon 

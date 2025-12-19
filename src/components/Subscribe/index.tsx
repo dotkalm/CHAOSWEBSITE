@@ -6,6 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useTheme } from '@mui/material/styles';
 import { subscribeToNewsletter, emailRegex } from '@/utils'; 
 import { COPY } from '@/constants';
+import { styles } from '@/styles/styles';
 
 export default function Subscribe() {
     const theme = useTheme();
@@ -55,10 +56,10 @@ export default function Subscribe() {
     return (
         <Box
             sx={{
-                maxWidth: {
-                    xs: '100%',
-                    sm: '50vw',
-                }
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 3,
+                ...styles.main
             }}
         >
             <Typography

@@ -27,20 +27,30 @@
   --color-muted: #808080;
 }
 
-html,body,#root{
-  height:100%;
-}
-
 html,body{
   margin:0;
-  background:transparent;
   color:var(--text);
+  overscroll-behavior: none;
 }
 
 @media (max-width: 899px) {
   html,body {
     margin: 0;
-    height: 100vh;
+  }
+}
+
+@media (pointer: coarse) and (hover: none) {
+  /* This is a true mobile/touch device */
+  html, body {
+    overflow: hidden;
+  }
+}
+
+@media (pointer: coarse) and (hover: none) and (max-width: 350px) {
+  /* This is a true mobile/touch device */
+  html, body {
+    overflow: auto;
+    touch-action: pan-y;
   }
 }
 
@@ -102,16 +112,8 @@ p {
 
 .layout-grid > main {
   grid-area: main;
-  min-height: 0;
 }
 
 .layout-grid > footer {
   grid-area: footer;
-}
-
-.layout-grid > .background {
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
-  z-index: -1;
-  pointer-events: none;
 }
