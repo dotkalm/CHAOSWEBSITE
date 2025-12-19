@@ -22,7 +22,6 @@ export function useParallax(
   shapes: ShapeBaseState[]
 ) {
   const rafIdRef = useRef<number>(0)
-  console.log(pointerPosition, shapes)
 
   useEffect(() => {
     if (shapes.length === 0) return

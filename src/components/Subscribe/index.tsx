@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useTheme } from '@mui/material/styles';
+import { useTheme, useMediaQuery } from '@mui/material';
 import { subscribeToNewsletter, emailRegex } from '@/utils'; 
 import { COPY } from '@/constants';
 import { styles } from '@/styles/styles';
@@ -53,6 +53,13 @@ export default function Subscribe() {
         }
     }
 
+    const isNarrow = useMediaQuery('(max-width: 300px)');
+    let placeholder: string = labels.placeholder;
+
+    if (isNarrow) {
+        placeholder = 'Email';
+    };
+
     return (
         <Box
             sx={{
@@ -91,10 +98,14 @@ export default function Subscribe() {
                     type="email"
                     autoComplete="email"
                     value={enteredText}
-                    placeholder={labels.placeholder}
+                    placeholder={placeholder}
                     sx={{
                         border: 'none',
                         flex: 1,
+                        width:{
+                            xs: '0',
+                            sm: 'auto',
+                        },
                         minWidth: 0, // Add this to allow input to shrink below its content width
                         ...theme.typography.body1,
                         fontFamily: 'inherit',

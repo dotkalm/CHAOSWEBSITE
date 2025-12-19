@@ -46,7 +46,7 @@ html,body{
   }
 }
 
-@media (pointer: coarse) and (hover: none) and (max-width: 350px) {
+@media (pointer: coarse) and (hover: none) and (max-width: 375px) {
   /* This is a true mobile/touch device */
   html, body {
     overflow: auto;
