@@ -21,7 +21,6 @@ export const subscribeToNewsletter = async (data: NewsletterFormData): Promise<s
         }
 
         const responseData = await response.json() as { message: string };
-        console.log(responseData);
         return responseData.message;
     } catch (err) {
         return Promise.reject(err);

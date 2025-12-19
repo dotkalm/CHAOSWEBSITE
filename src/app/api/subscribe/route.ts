@@ -23,7 +23,6 @@ interface MailchimpMember {
 }
 
 export async function POST(request: NextRequest) {
-  console.log('=== Newsletter subscription attempt ===');
   try {
     const body: SubscriptionRequest = await request.json();
     const { email } = body;
@@ -49,13 +48,6 @@ export async function POST(request: NextRequest) {
     const MAILCHIMP_API_KEY = process.env.MAIL_CHIMP_API_KEY;
     const MAILCHIMP_AUDIENCE_ID = process.env.MAIL_CHIMP_AUDIENCE_ID;
     const MAILCHIMP_DATA_CENTER = process.env.MAIL_CHIMP_DATA_CENTER;
-
-    console.log('Environment check:', {
-      hasApiKey: !!MAILCHIMP_API_KEY,
-      hasAudienceId: !!MAILCHIMP_AUDIENCE_ID,
-      hasDataCenter: !!MAILCHIMP_DATA_CENTER,
-      dataCenter: MAILCHIMP_DATA_CENTER // Safe to log data center
-    });
 
     if (!MAILCHIMP_API_KEY || !MAILCHIMP_AUDIENCE_ID || !MAILCHIMP_DATA_CENTER) {
       console.error('Missing Mailchimp environment variables');
@@ -89,7 +81,6 @@ export async function POST(request: NextRequest) {
     });
 
     const responseData = await response.json();
-    console.log(responseData);
 
     if (!response.ok) {
       const errorResponse = responseData as MailchimpErrorResponse;
@@ -145,7 +136,6 @@ export async function POST(request: NextRequest) {
         });
       }
       
-      console.error('Mailchimp API error:', errorResponse);
       return NextResponse.json(
         { 
           error: errorResponse.detail || 'Failed to subscribe. Please try again.',
