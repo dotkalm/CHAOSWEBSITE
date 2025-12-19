@@ -74,7 +74,7 @@ describe('Pointer Events', () => {
       const backgroundBox = container.firstChild as HTMLElement
       
       expect(backgroundBox).toHaveStyle('width: 100vw')
-      expect(backgroundBox).toHaveStyle('height: 100vh')
+      expect(backgroundBox).toHaveStyle('height: 100%')
       expect(backgroundBox).toHaveStyle('top: 0')
       expect(backgroundBox).toHaveStyle('left: 0')
     })
