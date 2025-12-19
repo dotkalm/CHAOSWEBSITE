@@ -1,6 +1,9 @@
 // app/api/subscribe/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 
+// Use Edge Runtime for faster response and no cold starts
+export const runtime = 'edge';
+
 interface SubscriptionRequest {
   email: string;
 }
@@ -20,6 +23,7 @@ interface MailchimpMember {
 }
 
 export async function POST(request: NextRequest) {
+  console.log('=== Newsletter subscription attempt ===');
   try {
     const body: SubscriptionRequest = await request.json();
     const { email } = body;
@@ -45,6 +49,13 @@ export async function POST(request: NextRequest) {
     const MAILCHIMP_API_KEY = process.env.MAIL_CHIMP_API_KEY;
     const MAILCHIMP_AUDIENCE_ID = process.env.MAIL_CHIMP_AUDIENCE_ID;
     const MAILCHIMP_DATA_CENTER = process.env.MAIL_CHIMP_DATA_CENTER;
+
+    console.log('Environment check:', {
+      hasApiKey: !!MAILCHIMP_API_KEY,
+      hasAudienceId: !!MAILCHIMP_AUDIENCE_ID,
+      hasDataCenter: !!MAILCHIMP_DATA_CENTER,
+      dataCenter: MAILCHIMP_DATA_CENTER // Safe to log data center
+    });
 
     if (!MAILCHIMP_API_KEY || !MAILCHIMP_AUDIENCE_ID || !MAILCHIMP_DATA_CENTER) {
       console.error('Missing Mailchimp environment variables');
