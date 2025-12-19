@@ -4,8 +4,7 @@ import Background from '@/components/Background';
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { SHAPE_COLOR_VALUES, themeColors } from '@/constants'
-import { getSeededIndex } from '@/utils';
+import { SHAPE_COLOR_VALUES,themeColors } from '@/constants'
 
 export const metadata = {
   title: 'CHAOS',
@@ -50,10 +49,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{
           __html: `
             // Generate color before React hydrates to prevent flash
-            (() => {
-              console.log(Date.now());
+            window.__CHAOS_SEED__ = (() => {
               const index = Math.floor(Date.now() / 100) % ${SHAPE_COLOR_VALUES.length};
-              console.log(index);
               const color = [
                 '#0000ff',
                 '#008700',
@@ -61,10 +58,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 '#db3adf',
                 '#d30000',
               ][index];
-              console.log(color);
               return color;
             })();
-            window.__CHAOS_SEED__ = '${themeColors[SHAPE_COLOR_VALUES[getSeededIndex(Date.now(), SHAPE_COLOR_VALUES.length)]]}';
           `
         }} />
       </head>
