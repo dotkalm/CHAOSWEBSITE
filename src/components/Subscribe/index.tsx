@@ -67,7 +67,7 @@ export default function Subscribe() {
                     marginBottom: 2,
                 }}
             >
-                {COPY.newsletter.description}
+                <em>CHAOS Of</em> is where CHAOS Agency untangles the beautifully disordered art world—past, present, and on-chain. Each episode, Amanda Schmitt and Janet Chuang break down how art really works behind the scenes, from the old systems to the new futures colliding to replace them.
             </Typography>
             <Box
                 component="form"
