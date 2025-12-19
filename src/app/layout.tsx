@@ -49,7 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{
           __html: `
             // Generate color before React hydrates to prevent flash
-            window.__CHAOS_SEED__ = (() => {
+            const randomColor = (() => {
               const index = Math.floor(Date.now() / 100) % ${SHAPE_COLOR_VALUES.length};
               const color = [
                 '#0000ff',
@@ -60,6 +60,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               ][index];
               return color;
             })();
+            console.log(randomColor);
+            window.__CHAOS_SEED__ = randomColor; 
           `
         }} />
       </head>
