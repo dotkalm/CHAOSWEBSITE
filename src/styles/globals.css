@@ -112,6 +112,7 @@ p {
 
 .layout-grid > main {
   grid-area: main;
+  min-height: 0;
 }
 
 .layout-grid > footer {

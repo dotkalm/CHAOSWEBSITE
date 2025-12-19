@@ -58,7 +58,6 @@ export default function Subscribe() {
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 3,
                 ...styles.main
             }}
         >
