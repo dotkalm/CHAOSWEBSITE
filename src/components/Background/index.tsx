@@ -53,7 +53,7 @@ export default function Background(){
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('a11yChange', handleA11yChange);
     };
-  }, [pathname, seed, theme, getIndex]);
+  }, [pathname]);
 
   const { lastMoveTime } = usePointer()
   const opacity = useIdleFade(lastMoveTime)

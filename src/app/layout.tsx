@@ -45,6 +45,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            // Generate seed before React hydrates to prevent flash
+            window.__CHAOS_SEED__ = Date.now();
+          `
+        }} />
       </head>
       <body>
         <MuiProvider>
