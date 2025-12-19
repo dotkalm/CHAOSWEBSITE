@@ -78,6 +78,7 @@ export async function POST(request: NextRequest) {
     });
 
     const responseData = await response.json();
+    console.log(responseData);
 
     if (!response.ok) {
       const errorResponse = responseData as MailchimpErrorResponse;
