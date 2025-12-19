@@ -15,13 +15,15 @@ export default function Background(){
   const color = typeof window !== 'undefined' ? (window as any).__CHAOS_SEED__ : (() => {
     const index = Math.floor(Date.now() / 100) % SHAPE_COLOR_VALUES.length;
     return theme.palette.shapes[SHAPE_COLOR_VALUES[index]];
-  })();
+  })() as string;
   
   // Calculate initial color to prevent flash
   const [randomColor, setRandomColor] = useState<string>(() => {
     const index = Math.floor(Date.now() / 100) % SHAPE_COLOR_VALUES.length;
-    return theme.palette.shapes[SHAPE_COLOR_VALUES[index]];
+    return color || theme.palette.shapes[SHAPE_COLOR_VALUES[index]];
   });
+
+  console.log(randomColor, color)
 
   useEffect(() => {
     const getColorFromSeed = (a11yState: boolean) => {
@@ -71,7 +73,7 @@ export default function Background(){
         opacity,
         transition: 'none',
         '& svg path': {
-          fill: color || randomColor,
+          fill: randomColor,
           strokeWidth: 0
         }
       }}
